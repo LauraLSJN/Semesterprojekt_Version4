@@ -85,7 +85,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
     //Tilføjer foodObjects til gameObject arraylisten
     public void addFoodObjects() {
-
         if(currentLevel == 0){
         gameObject.add(new FoodObjects(1, false));
         } else if (currentLevel==1){
@@ -114,14 +113,17 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         }
 
         public void checkStop(){
+        checkLevel();
             if (shoppingBaskets.get(0).nowCollectedFood == shoppingBaskets.get(0).maxValue) {
                 //addFoodObjects(); //Tilføjer nyt objekt til arrayliste hvis shoppingBasket ikke er lig maks
                 this.stopDrop = true;
                 removeFoodObjects();
                 setWon(true);
+                System.out.println(this.won);
 
                 //setTest(true);
             }
+            //setWon(false);
 
             if(tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0){
                 this.stopDrop = true;
@@ -246,8 +248,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             g.fillRect(tekstBoksX,tekstBoksY,tekstBoksWidth,tekstBoksHeight);
             g.setColor(Color.GREEN);
             g.drawString("DU HAR VUNDET",tekstBoksX+50,tekstBoksY+70);
-
-
 
         }
         else if (isLost()){

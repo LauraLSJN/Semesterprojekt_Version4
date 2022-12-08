@@ -40,9 +40,11 @@ public class Display extends JFrame {
 
 
 
+
+
         graphics.drawImage(img, 0, 0,700,500,null); //"Tegner" baggrunden som billedet
         //graphics.fillRect(0, 0, canvas.getWidth(),canvas.getHeight()); //Kan anvendes hvis billede ikke virker
-        game.tekstBoks(graphics);
+
 
 
        // game.tekstBoks();
@@ -61,32 +63,56 @@ public class Display extends JFrame {
 
         //Henter gameObjects (FoodObjcts & PlayerObjects) og tegner det
         //Anvender Lambda Expression
-        game.getGameObject().forEach(gameObject -> graphics.drawImage( //gameobject vi har foodobjekter og player i
-                gameObject.getSprite(),
-                gameObject.getPosition().getX(),
-                gameObject.getPosition().getY(),
-                null
 
-        ));
-        //Tegner shoppingBasket
-        game.getShoppingBaskets().forEach(shoppingBasket -> graphics.drawImage(
-                shoppingBasket.getSprite(),
-                shoppingBasket.position.getX(),
-                shoppingBasket.position.getY(), null
-        ));
+        game.tekstBoks(graphics);
 
-        //Tegner tiden
-        game.getTid().forEach(tid -> graphics.drawImage(
-                tid.getSprite(),
-                tid.position.getX(),
-                tid.position.getY(),null
-        ));
+        if(game.currentLevel == 0) {
+
+            game.getGameObject().forEach(gameObject -> graphics.drawImage( //gameobject vi har foodobjekter og player i
+                    gameObject.getSprite(),
+                    gameObject.getPosition().getX(),
+                    gameObject.getPosition().getY(),
+                    null
+
+            ));
+            //Tegner shoppingBasket
+            game.getShoppingBaskets().forEach(shoppingBasket -> graphics.drawImage(
+                    shoppingBasket.getSprite(),
+                    shoppingBasket.position.getX(),
+                    shoppingBasket.position.getY(), null
+            ));
+
+            //Tegner tiden
+            game.getTid().forEach(tid -> graphics.drawImage(
+                    tid.getSprite(),
+                    tid.position.getX(),
+                    tid.position.getY(), null
+            ));
+
+            graphics.dispose();
+            bufferStartegy.show();
+
+        }
 
 
-        graphics.dispose();
-        bufferStartegy.show();
+        if(game.currentLevel > 0){
+            game.getTid().forEach(tid -> graphics.drawImage(
+                    tid.getSprite(),
+                    tid.position.getX(),
+                    tid.position.getY(), null
+            ));
+
+            graphics.dispose();
+            bufferStartegy.show();
+        }
+
+
+
+
 
     }
+
+
 
 
 
