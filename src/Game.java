@@ -28,7 +28,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     boolean lost;
 
 
-    int currentLevel=0;
+    int currentLevel=1;
     // creating a My HashTable Dictionary
    // Hashtable<Integer, String> gameLevel = new Hashtable<String, String>();
 
@@ -40,10 +40,10 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
 //boolean test = false;
 
-    public Game(int currentLevel) {
+    public Game() {
         this.won = false;
         this.lost = false;
-        this.currentLevel = currentLevel;
+      //  this.currentLevel = currentLevel;
 
         //this.test = false;
         this.stopDrop = false;
@@ -59,7 +59,8 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
         //Shoppingkurven
         shoppingBaskets = new ArrayList<>();
-        shoppingBaskets.add(new ShoppingBasket());
+      //  shoppingBaskets.add(new ShoppingBasket());
+        shoppingBasketsLevel();
         System.out.println("Test");
 
         //Food og Player
@@ -72,6 +73,14 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         System.out.println(getGameObject());
 
 
+    }
+
+    public void shoppingBasketsLevel(){
+        if(currentLevel == 0){
+            shoppingBaskets.add(new ShoppingBasket(5));
+        } else if(currentLevel == 1){
+            shoppingBaskets.add(new ShoppingBasket(100));
+        }
     }
 
     //Tilføjer foodObjects til gameObject arraylisten
@@ -237,7 +246,8 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             g.fillRect(tekstBoksX,tekstBoksY,tekstBoksWidth,tekstBoksHeight);
             g.setColor(Color.GREEN);
             g.drawString("DU HAR VUNDET",tekstBoksX+50,tekstBoksY+70);
-            currentLevel++;
+
+
 
         }
         else if (isLost()){

@@ -23,9 +23,9 @@ public class ShoppingBasket {
     // int oldCollectedFood;
     int nowCollectedFood;
 
-    public ShoppingBasket() {
+    public ShoppingBasket(int shoppingbasket) {
         position = new Position(0, 0);
-        this.maxValue = 5;
+        this.maxValue = shoppingbasket;
         maxValueString = String.valueOf(maxValue);
         this.collectedFood = 0;
         //    this.oldCollectedFood = 0;

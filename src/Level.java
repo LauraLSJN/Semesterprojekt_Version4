@@ -1,32 +1,29 @@
-/*public class Level extends FoodObjects {
+/*public class Level {
 
-    protected int currentLevel;
-    protected int nextLevel;
-    protected int levelLow;
-    protected int levelMedium;
-    protected int levelHigh;
-    GameObject gameObject;
-    Tid tid;
-    FoodObjects foodObjects;
 
-    //public Level(){
+    int currentLevel=0;
 
-    //}
-
-    public void levelLow(){
+    public Level(int level){
+        this.currentLevel = level;
     }
 
-    public void detectLevel(){
+    public int getCurrentLevel() {
+        return currentLevel;
+    }
+
+    public void setCurrentLevel(int currentLevel) {
         this.currentLevel = currentLevel;
     }
 
-    public void setNextLevel(int nextLevel) {
-        this.nextLevel = nextLevel;
+
+    public void setup(){
+        if(currentLevel == 0){
+            new Thread(new GameLoop(new Game(0))).start();
+        } else if (currentLevel == 1){
+            new Thread(new GameLoop(new Game(1))).start();
+        }
     }
 
 
 
-
-
-}
-*/
+}*/
