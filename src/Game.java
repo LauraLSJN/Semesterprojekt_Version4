@@ -28,7 +28,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     boolean lost;
 
 
-    int currentLevel=1;
+    int currentLevel=0;
     // creating a My HashTable Dictionary
    // Hashtable<Integer, String> gameLevel = new Hashtable<String, String>();
 
