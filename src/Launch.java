@@ -6,7 +6,7 @@ public class Launch {
         /*if(((MyFrame) new MyFrame()).isPressed){
             new Thread(new GameLoop(new Game())).start();
         }*/
-        new Thread(new GameLoop(new Game())).start();
+        new Thread(new GameLoop(new Game(0))).start();
 
 
     }

@@ -88,11 +88,7 @@ public class Display extends JFrame {
 
     }
 
-    public void menu(Game game){
-        game = new Game();
 
-
-    }
 
 
 

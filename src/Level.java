@@ -1,4 +1,4 @@
-public class Level extends FoodObjects {
+/*public class Level extends FoodObjects {
 
     protected int currentLevel;
     protected int nextLevel;
@@ -9,9 +9,9 @@ public class Level extends FoodObjects {
     Tid tid;
     FoodObjects foodObjects;
 
-    public Level(){
+    //public Level(){
 
-    }
+    //}
 
     public void levelLow(){
     }
@@ -29,3 +29,4 @@ public class Level extends FoodObjects {
 
 
 }
+*/
