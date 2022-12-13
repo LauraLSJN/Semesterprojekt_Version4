@@ -82,17 +82,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
     }
 
-  /*  public void addToLevels(){
-        if(currentLevel == 0){
-            gameObject.add(new FoodObjects(1, false));
-            shoppingBaskets.add(new ShoppingBasket(5));
-        } else if (currentLevel==1){
-            gameObject.add(new FoodObjects(2,true));
-            shoppingBaskets.add(new ShoppingBasket(30));
-        }
-
-    }
-*/
 
     public void addLevels(){
         if(currentLevel == 0){
@@ -114,7 +103,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     }
 
 
-
+/*
     public void addPlayerLevel(){
         if(currentLevel == 0){
             gameObject.add(new PlayerObject(new Player(input), 1));
@@ -125,7 +114,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         }else{
             gameObject.add(new PlayerObject(new Player(input), 10));
         }
-    }
+    }*/
 
    /* public void shoppingBasketsLevel(){
         if(currentLevel == 0){
@@ -185,7 +174,10 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
                     StartGameWindow startgamewindow = new StartGameWindow();//laver nyt objekt og laver intance
                         //display.levelBoks(currentLevel);
                    // startgamewindow.windowDispose(true);
-                    startgamewindow.levelBoks(currentLevel);
+                   // startgamewindow.levelBoks(currentLevel);
+                    display.levelBoks(currentLevel);
+                    display.dispose();
+
 
 
 

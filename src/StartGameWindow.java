@@ -47,7 +47,7 @@ public void windowDispose(boolean dispose ){
 
     }
 
-    public void levelBoks(int level){
+   /* public void levelBoks(int level){
        // JFrame window = new JFrame();//tegner vinduet
 
 
@@ -69,7 +69,7 @@ public void windowDispose(boolean dispose ){
         window.setLocationRelativeTo(null);//Placerer vinduet
         window.setVisible(true);//gor vinduet synlig
     }
-
+*/
 
     //Denne classe er n'dvendig for at tegne classen
     static class GamePanel extends JPanel {
