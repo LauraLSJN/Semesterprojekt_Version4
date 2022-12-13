@@ -29,6 +29,11 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     boolean pauseState;
 
 
+    @Override
+    public String toString() {
+        return "CurrentLevel: " + currentLevel;
+    }
+
     int currentLevel=0;
     // creating a My HashTable Dictionary
    // Hashtable<Integer, String> gameLevel = new Hashtable<String, String>();
@@ -170,18 +175,8 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
                     System.out.println(this.won);
                     currentLevel++;
                     System.out.println("currentLevel; " + currentLevel);
-
-                    StartGameWindow startgamewindow = new StartGameWindow();//laver nyt objekt og laver intance
-                        //display.levelBoks(currentLevel);
-                   // startgamewindow.windowDispose(true);
-                   // startgamewindow.levelBoks(currentLevel);
                     display.levelBoks(currentLevel);
                     display.dispose();
-
-
-
-
-                   // display.levelBoks(currentLevel);
                 }
 
             }
@@ -313,10 +308,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             g.fillRect(tekstBoksX,tekstBoksY,tekstBoksWidth,tekstBoksHeight);
             g.setColor(Color.GREEN);
             g.drawString("DU HAR VUNDET",tekstBoksX+50,tekstBoksY+70);
-
-
-
-
 
         }
         else if (isLost()){
