@@ -55,24 +55,26 @@ public class Display extends JFrame {
         //canvas.setVisible(true);//gor vinduet synlig
     }*/
 
-    public void levelBoks(int level){
+    public void levelBoks(int level, boolean won ){
         // JFrame window = new JFrame();//tegner vinduet
-        JFrame window = new JFrame();
-        window.setTitle("MyFoodSolver");//titel pa vinduet
-        window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
-        GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
-        window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
+      if (won) {
 
-       // gamePanel.setLayout(new BoxLayout(gamePanel, BoxLayout.PAGE_AXIS));
-        JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet <BR> </div></html>", SwingConstants.CENTER ); //, SwingConstants.CENTER
-       // JLabel jlabel = new JLabel("<html> Tillykke <BR> Du har vundet </html> ");
-        //jlabel.setHorizontalAlignment(SwingConstants.CENTER);
-        //jlabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        //jlabel.setVerticalAlignment(SwingConstants.CENTER);
-        jlabel.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
-        gamePanel.add(jlabel);
-        //window.add(jlabel);
-        jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
+          JFrame window = new JFrame();
+          window.setTitle("MyFoodSolver");//titel pa vinduet
+          window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
+          GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+          window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
+
+          // gamePanel.setLayout(new BoxLayout(gamePanel, BoxLayout.PAGE_AXIS));
+          JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
+          // JLabel jlabel = new JLabel("<html> Tillykke <BR> Du har vundet </html> ");
+          //jlabel.setHorizontalAlignment(SwingConstants.CENTER);
+          //jlabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+          //jlabel.setVerticalAlignment(SwingConstants.CENTER);
+          jlabel.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
+          gamePanel.add(jlabel);
+          //window.add(jlabel);
+          jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
 
         /*
         JLabel label = new JLabel("<html> <div style='text-align: center;'>  Hej </div></html");
@@ -82,36 +84,72 @@ public class Display extends JFrame {
         gamePanel.add(label);
 */
 
-        //game.tekstBoks(graphics);
-        JButton startBtn = new JButton("Klik her for at starte level " + level + "!" );//Det som skla staa i vores startknap
-       // gamePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        //startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-        //startBtn.setLayout(new BoxLayout(startBtn, BoxLayout.LINE_AXIS));
-       // startBtn.setLocation(400,400);
-       // startBtn.setSize(50,50);
-        //startBtn.setHorizontalTextPosition(SwingConstants.CENTER);
-       // startBtn.setBounds(500,500,100,100);
-        startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
-        startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-       // jlabel.setHorizontalAlignment(SwingConstants.CENTER);
-        // startBtn.setForeground(Color.GREEN);//Farve paa tekst
-        //startBtn.setBounds(300,300,100,100);
+          //game.tekstBoks(graphics);
+          JButton startBtn = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
+          // gamePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+          //startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+          //startBtn.setLayout(new BoxLayout(startBtn, BoxLayout.LINE_AXIS));
+          // startBtn.setLocation(400,400);
+          // startBtn.setSize(50,50);
+          //startBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+          // startBtn.setBounds(500,500,100,100);
+          startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
+          startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+          // jlabel.setHorizontalAlignment(SwingConstants.CENTER);
+          // startBtn.setForeground(Color.GREEN);//Farve paa tekst
+          //startBtn.setBounds(300,300,100,100);
 
-        //startBtn.setPreferredSize(new Dimension(100, 100));//Storrelsen paa knappen
-        // startBtn.setBackground(Color.green);//Farve paa knappen
+          //startBtn.setPreferredSize(new Dimension(100, 100));//Storrelsen paa knappen
+          // startBtn.setBackground(Color.green);//Farve paa knappen
 
-        startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
-        startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
-        gamePanel.add(startBtn,BorderLayout.CENTER);
-
-
-        //startBtn.setBounds(300,300,100,100);
-       // gamePanel.add( startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
+          startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
+          startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
+          gamePanel.add(startBtn, BorderLayout.CENTER);
 
 
-        window.pack();//tegner alt indhold
-        window.setLocationRelativeTo(null);//Placerer vinduet
-        window.setVisible(true);//gor vinduet synlig
+          //startBtn.setBounds(300,300,100,100);
+          // gamePanel.add( startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
+
+
+          window.pack();//tegner alt indhold
+          window.setLocationRelativeTo(null);//Placerer vinduet
+          window.setVisible(true);//gor vinduet synlig
+
+      } else if (won == false ){
+          System.out.println("won == false ");
+
+          JFrame window = new JFrame();
+          window.setTitle("MyFoodSolver");//titel pa vinduet
+          window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
+          GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+          window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
+
+          JLabel jlabel = new JLabel("<html><div style='text-align: center;'> ØV BØV <BR> Du har tabt <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
+          jlabel.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
+          gamePanel.add(jlabel);
+          jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
+
+
+          JButton startBtn = new JButton("Klik her for at starte level " + level + " IGEN!");//Det som skla staa i vores startknap
+          startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
+          startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+          // jlabel.setHorizontalAlignment(SwingConstants.CENTER);
+          // startBtn.setForeground(Color.GREEN);//Farve paa tekst
+          //startBtn.setBounds(300,300,100,100);
+
+          //startBtn.setPreferredSize(new Dimension(100, 100));//Storrelsen paa knappen
+          // startBtn.setBackground(Color.green);//Farve paa knappen
+
+          startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
+          startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
+          gamePanel.add(startBtn, BorderLayout.CENTER);
+
+          window.pack();//tegner alt indhold
+          window.setLocationRelativeTo(null);//Placerer vinduet
+          window.setVisible(true);//gor vinduet synlig
+
+
+      }
     }
 
     public void render(Game game){

@@ -22,20 +22,20 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
     AttributedString attributedText;
     Font font = new Font("Monospaced", Font.BOLD, 15);
-   // Level level;
+    // Level level;
 
     boolean won;
     boolean lost;
     boolean pauseState;
 
 
-    int currentLevel=0;
+    int currentLevel = 0;
     // creating a My HashTable Dictionary
-   // Hashtable<Integer, String> gameLevel = new Hashtable<String, String>();
+    // Hashtable<Integer, String> gameLevel = new Hashtable<String, String>();
 
-    public void createLevels(){
-  //  gameLevel.put(1, "Level 1");
-   // gameLevel.put("2", "Level 2");
+    public void createLevels() {
+        //  gameLevel.put(1, "Level 1");
+        // gameLevel.put("2", "Level 2");
     }
 
 
@@ -46,11 +46,11 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         this.pauseState = false;
         this.won = false;
         this.lost = false;
-      //  this.currentLevel = currentLevel;
+        //  this.currentLevel = currentLevel;
 
         //this.test = false;
         this.stopDrop = false;
-       // level = new Level();
+        // level = new Level();
 
         input = new Input();
         size = new Size();
@@ -61,16 +61,16 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
         //Shoppingkurven
         shoppingBaskets = new ArrayList<>();
-      //  shoppingBaskets.add(new ShoppingBasket());
+        //  shoppingBaskets.add(new ShoppingBasket());
         //shoppingBasketsLevel();
         System.out.println("Test");
 
         //Food og Player
         gameObject = new ArrayList<>();
         //addPlayerLevel();
-       // gameObject.add(new PlayerObject(new Player(input),3)); //playerobject skal være index 0 for at detection virker
+        // gameObject.add(new PlayerObject(new Player(input),3)); //playerobject skal være index 0 for at detection virker
 
-      // addToLevels();
+        // addToLevels();
         addLevels();
         //addFoodObjects();
 
@@ -82,24 +82,24 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     }
 
 
-    public void addLevels(){
-        if(currentLevel == 0){
+    public void addLevels() {
+        if (currentLevel == 0) {
             shoppingBaskets.add(new ShoppingBasket(5));
             gameObject.add(new PlayerObject(new Player(input), 1));
             addFoodObjects();
 
-        } else if( currentLevel == 1){
+        } else if (currentLevel == 1) {
             shoppingBaskets.add(new ShoppingBasket(30));
             gameObject.add(new PlayerObject(new Player(input), 3));
             addFoodObjects();
 
-        }else if (currentLevel == 2){
+        } else if (currentLevel == 2) {
             shoppingBaskets.add(new ShoppingBasket(50));
             gameObject.add(new PlayerObject(new Player(input), 5));
             System.out.println(getGameObject());
             addFoodObjects();
 
-        }else {
+        } else {
             System.out.println("addLevels: else ");
         }
     }
@@ -130,13 +130,13 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
     //Tilføjer foodObjects til gameObject arraylisten
     public void addFoodObjects() {
-        if(currentLevel == 0){
-        gameObject.add(new FoodObjects(1, false, false));
-        } else if (currentLevel==1){
-            gameObject.add(new FoodObjects(2,false,false));
-        } else if (currentLevel == 2){
-            gameObject.add(new FoodObjects(3,true,true));
-        }else {
+        if (currentLevel == 0) {
+            gameObject.add(new FoodObjects(1, false, false));
+        } else if (currentLevel == 1) {
+            gameObject.add(new FoodObjects(2, false, false));
+        } else if (currentLevel == 2) {
+            gameObject.add(new FoodObjects(3, true, true));
+        } else {
             System.out.println("addFoodObject: else ");
         }
 
@@ -148,57 +148,51 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     //Dropper foodoOjects
     public void dropFoodObjects() {
         int randomTal = random.nextInt(2000);
-        if(this.stopDrop == false && randomTal <= 25) {
-                addFoodObjects();
-           // addToLevels();
+        if (this.stopDrop == false && randomTal <= 25) {
+            addFoodObjects();
+            // addToLevels();
         }
     }
 
-    public void removeFoodObjects(){
-            for (int i = 1; i < gameObject.size(); i++) {
-                gameObject.remove(i); //Fjerne dem der ikke er ramt fra ArrayListe
-                //System.out.println(getGameObject());
-                //System.out.println("FJERNER: " + getGameObject().get(i));
-               // level.setNextLevel(1);
-                // removeAllFoodObjects();
-                tid.get(0).stopTid();
-            }
+    public void removeFoodObjects() {
+        for (int i = 1; i < gameObject.size(); i++) {
+            gameObject.remove(i); //Fjerne dem der ikke er ramt fra ArrayListe
+            //System.out.println(getGameObject());
+            //System.out.println("FJERNER: " + getGameObject().get(i));
+            // level.setNextLevel(1);
+            // removeAllFoodObjects();
+            tid.get(0).stopTid();
         }
+    }
 
-        public void checkStop(){
+    public void checkStop() {
         //checkLevel();
-            if (shoppingBaskets.get(0).nowCollectedFood == shoppingBaskets.get(0).maxValue) {
-                //addFoodObjects(); //Tilføjer nyt objekt til arrayliste hvis shoppingBasket ikke er lig maks
-                removeFoodObjects();
-                if(this.stopDrop == false) {
-                    setWon(true);
-                    System.out.println(this.won);
-                    currentLevel++;
-                    System.out.println("currentLevel; " + currentLevel);
+        if (shoppingBaskets.get(0).nowCollectedFood == shoppingBaskets.get(0).maxValue) {
+            //addFoodObjects(); //Tilføjer nyt objekt til arrayliste hvis shoppingBasket ikke er lig maks
+            removeFoodObjects();
+            if (this.stopDrop == false) {
+                setWon(true);
+                System.out.println(this.won);
+                currentLevel++;
+                System.out.println("currentLevel; " + currentLevel);
+                display.levelBoks(currentLevel, true);
+                display.dispose();
 
-                    StartGameWindow startgamewindow = new StartGameWindow();//laver nyt objekt og laver intance
-                        //display.levelBoks(currentLevel);
-                   // startgamewindow.windowDispose(true);
-                   // startgamewindow.levelBoks(currentLevel);
-                    display.levelBoks(currentLevel);
-                    display.dispose();
-
-
-
-
-                   // display.levelBoks(currentLevel);
-                }
-
-            }
-
-            if(tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0){ //&& this.stopDrop == false
-                this.stopDrop = true;
-                removeFoodObjects();
-                setLost(true);
-                //setTest(true);
             }
 
         }
+
+        if (tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0 && this.stopDrop == false) { //&& this.stopDrop == false
+            this.stopDrop = true;
+            removeFoodObjects();
+            if(isWon() == false) {
+                display.levelBoks(currentLevel, false);
+                display.dispose();
+                setLost(true);
+            }
+        }
+
+    }
 
 
 
@@ -217,7 +211,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         for (int x = 1; x < gameObject.size(); x++) {
             if ((gameObject.get(x).getPosition().getX() >= (gameObject.get(0).getPosition().getX() - 30)) // food x >= player x - 30
                     && (gameObject.get(x).getPosition().getX() <= (gameObject.get(0).getPosition().getX() + size.getPlayerObjectWidth() + 20)) //food x <= player x+ size + 20
-                    && ((gameObject.get(x).getPosition().getY() + size.getFoodObjectHeight()) >= gameObject.get(0).getPosition().getY()+5) // food y + size >= player y +5
+                    && ((gameObject.get(x).getPosition().getY() + size.getFoodObjectHeight()) >= gameObject.get(0).getPosition().getY() + 5) // food y + size >= player y +5
                     && ((gameObject.get(x).getPosition().getY() + size.getFoodObjectHeight()) <= (gameObject.get(0).getPosition().getY() + size.getPlayerObjectHeight() + 20)) //food y <= player y + size + 20
                     && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) >= (gameObject.get(0).getPosition().getX() - 35)) //food x + size >= player x -35
                     && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) <= (gameObject.get(0).getPosition().getX() + size.getFoodObjectWidth() + 60)) //food x + size <= player x + size + 60
@@ -228,14 +222,13 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
                 shoppingBaskets.get(0).addCollectedFood(gameObject.get(x).getPrice().getValuePrice());
 
 
-
                 System.out.println(gameObject.get(x).getPosition().getX());
                 System.out.println(gameObject.toString());
                 System.out.println(x);
 
                 gameObject.remove(x); //Fjerner objektet -> Der bliver ramt
                 System.out.println(getGameObject()); //Print til konsol -> Se om objektet er fjernet fra arraylist
-               // this.test = true;
+                // this.test = true;
 
             }
 
@@ -244,7 +237,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
     public void detectionOutOfDisplay() {
         for (int i = 1; i < gameObject.size(); i++) {
-            if (gameObject.get(i).getPosition().getY() >= gameObject.get(0).getPosition().getY()+ size.getPlayerObjectHeight()) { //food y >= player y + player height
+            if (gameObject.get(i).getPosition().getY() >= gameObject.get(0).getPosition().getY() + size.getPlayerObjectHeight()) { //food y >= player y + player height
                 gameObject.remove(i);
             }
 
@@ -300,36 +293,32 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         attributedText.addAttribute(TextAttribute.FOREGROUND, Color.RED); //Sættes til foreground + farve = hvid
         graphics.drawString(attributedText.getIterator(), x, y); //Placeres i billede -> X og y kordinat er i henhold til image
     }
-    
-    public void tekstBoks(Graphics g){
+
+    public void tekstBoks(Graphics g) {
         //Center -> GetAscent og getDescent -> Som tage
         //String tekst -> hvor vi kan bruge ovenstående, som tager størrelsen af string ift. font -> Derefter kan vi centrerer det
         //https://www.tabnine.com/code/java/methods/java.awt.Graphics/setFont
 
-        int tekstBoksWidth = size.getDisplayWidth()-200; // 500
-        int tekstBoksHeight = size.getDisplayHeight()-400; //100
+        int tekstBoksWidth = size.getDisplayWidth() - 200; // 500
+        int tekstBoksHeight = size.getDisplayHeight() - 400; //100
         int tekstBoksX = 100;
-        int tekstBoksY = (size.getDisplayHeight()/2)- tekstBoksHeight-50;
+        int tekstBoksY = (size.getDisplayHeight() / 2) - tekstBoksHeight - 50;
         Font font = new Font("Serif", Font.BOLD, 50);
 
-        if (isWon()){
+        if (isWon()) {
             g.setFont(font);
             g.setColor(Color.LIGHT_GRAY);
-            g.fillRect(tekstBoksX,tekstBoksY,tekstBoksWidth,tekstBoksHeight);
+            g.fillRect(tekstBoksX, tekstBoksY, tekstBoksWidth, tekstBoksHeight);
             g.setColor(Color.GREEN);
-            g.drawString("DU HAR VUNDET",tekstBoksX+50,tekstBoksY+70);
+            g.drawString("DU HAR VUNDET", tekstBoksX + 50, tekstBoksY + 70);
 
 
-
-
-
-        }
-        else if (isLost()){
+        } else if (isLost()) {
             g.setFont(font);
             g.setColor(Color.LIGHT_GRAY);
-            g.fillRect(tekstBoksX,tekstBoksY,tekstBoksWidth,tekstBoksHeight);
+            g.fillRect(tekstBoksX, tekstBoksY, tekstBoksWidth, tekstBoksHeight);
             g.setColor(Color.RED);
-            g.drawString("DU HAR TABT",tekstBoksX+50,tekstBoksY+70);
+            g.drawString("DU HAR TABT", tekstBoksX + 50, tekstBoksY + 70);
             //System.out.println("false ");
         }
     }
