@@ -10,7 +10,7 @@ public class Tid {
     Position position;
 
     int minSecond;
-    int second=10;
+    int second=30;
     int minute;
 
 
