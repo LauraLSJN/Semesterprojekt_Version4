@@ -3,24 +3,31 @@ import java.awt.image.BufferedImage;
 
 public class PlayerObject extends GameObject {
     private Controller controller;
+
+
+
     private int speedX;
+    private int speed;
     private int oldPosX;
     //Image imgShoppingkurv = Toolkit.getDefaultToolkit().getImage("/Users/laura/Desktop/shoppingKurv3.png");
     Image imgShoppingkurv = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingKurv3.png");
 
 
 
-    public PlayerObject(Controller controller) {
+    public PlayerObject(Controller controller, int speed) { //, int speed
         super();
         this.controller = controller;
         //position = new Position(350,465); //Starter på denne position
         position = new Position(350,440);
+        this.speed = speed;
 
     }
 
+
     @Override
     public void update() {
-        speedX = 0;
+       speedX = speed;
+        // speedX = 0;
         oldPosX = position.getX(); //Gemmer tidligere x koordinat
 
             if (controller.isRequestiongLeft()) {

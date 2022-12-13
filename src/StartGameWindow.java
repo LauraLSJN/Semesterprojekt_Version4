@@ -75,7 +75,6 @@ public void windowDispose(boolean dispose ){
     static class GamePanel extends JPanel {
         JFrame window;
 
-        public GamePanel(){}
 
         GamePanel(JFrame window ) {
             this.window = window;
