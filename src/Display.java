@@ -57,22 +57,30 @@ public class Display extends JFrame {
 
     public void levelBoks(int level){
         // JFrame window = new JFrame();//tegner vinduet
-
         JFrame window = new JFrame();
         window.setTitle("MyFoodSolver");//titel pa vinduet
-       GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+        window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
+        GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
         window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
 
+        JLabel jlabel = new JLabel("Du har vundet");
+        gamePanel.add(jlabel);
+
         //game.tekstBoks(graphics);
+
         JButton startBtn = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
         startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
         // startBtn.setForeground(Color.GREEN);//Farve paa tekst
-        startBtn.setPreferredSize(new Dimension(700, 80));//Storrelsen paa knappen
+        //startBtn.setBounds(300,300,100,100);
+
+        //startBtn.setPreferredSize(new Dimension(100, 100));//Storrelsen paa knappen
         // startBtn.setBackground(Color.green);//Farve paa knappen
+
         startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
+        //startBtn.setBounds(300,300,100,100);
         window.add(startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
 
-        window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
+
         window.pack();//tegner alt indhold
         window.setLocationRelativeTo(null);//Placerer vinduet
         window.setVisible(true);//gor vinduet synlig
@@ -81,34 +89,14 @@ public class Display extends JFrame {
     public void render(Game game){
         BufferStrategy bufferStartegy = canvas.getBufferStrategy();
         Graphics graphics = bufferStartegy.getDrawGraphics();
-
         graphics.drawImage(img, 0, 0,700,500,null); //"Tegner" baggrunden som billedet
         //graphics.fillRect(0, 0, canvas.getWidth(),canvas.getHeight()); //Kan anvendes hvis billede ikke virker
 
 
 
-        //game.tekstBoks(graphics);
-      /* if (game.isTest()){
-           //game.getSprite();
-           graphics.setColor(Color.black);
-           graphics.fillRect(300,300,100,100);
-           //System.out.println("TRUE");
-
-
-       }else{
-           //System.out.println("false ");
-       }*/
-
-
-
         //Henter gameObjects (FoodObjcts & PlayerObjects) og tegner det
         //Anvender Lambda Expression
-
-        game.tekstBoks(graphics);
        // levelBoks(game.currentLevel);
-
-
-
 
             game.getGameObject().forEach(gameObject -> graphics.drawImage( //gameobject vi har foodobjekter og player i
                     gameObject.getSprite(),
