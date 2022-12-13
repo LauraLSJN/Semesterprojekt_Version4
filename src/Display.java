@@ -63,13 +63,37 @@ public class Display extends JFrame {
         GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
         window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
 
-        JLabel jlabel = new JLabel("Du har vundet");
+       // gamePanel.setLayout(new BoxLayout(gamePanel, BoxLayout.PAGE_AXIS));
+        JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet <BR> </div></html>", SwingConstants.CENTER ); //, SwingConstants.CENTER
+       // JLabel jlabel = new JLabel("<html> Tillykke <BR> Du har vundet </html> ");
+        //jlabel.setHorizontalAlignment(SwingConstants.CENTER);
+        //jlabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //jlabel.setVerticalAlignment(SwingConstants.CENTER);
+        jlabel.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
         gamePanel.add(jlabel);
+        //window.add(jlabel);
+        jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
+
+        /*
+        JLabel label = new JLabel("<html> <div style='text-align: center;'>  Hej </div></html");
+        label.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
+       // label.setHorizontalAlignment(SwingConstants.CENTER);
+        gamePanel.setAlignmentX(Component.TOP_ALIGNMENT);
+        gamePanel.add(label);
+*/
 
         //game.tekstBoks(graphics);
-
-        JButton startBtn = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
+        JButton startBtn = new JButton("Klik her for at starte level " + level + "!" );//Det som skla staa i vores startknap
+       // gamePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //startBtn.setLayout(new BoxLayout(startBtn, BoxLayout.LINE_AXIS));
+       // startBtn.setLocation(400,400);
+       // startBtn.setSize(50,50);
+        //startBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+       // startBtn.setBounds(500,500,100,100);
         startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
+        startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+       // jlabel.setHorizontalAlignment(SwingConstants.CENTER);
         // startBtn.setForeground(Color.GREEN);//Farve paa tekst
         //startBtn.setBounds(300,300,100,100);
 
@@ -77,8 +101,12 @@ public class Display extends JFrame {
         // startBtn.setBackground(Color.green);//Farve paa knappen
 
         startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
+        startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
+        gamePanel.add(startBtn,BorderLayout.CENTER);
+
+
         //startBtn.setBounds(300,300,100,100);
-        window.add(startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
+       // gamePanel.add( startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
 
 
         window.pack();//tegner alt indhold
