@@ -77,6 +77,7 @@ public class Display extends JFrame {
           jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
 
 
+
           //game.tekstBoks(graphics);
           JButton startBtn = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
           // gamePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -110,7 +111,6 @@ public class Display extends JFrame {
 
       } else if (won == false ){
           System.out.println("won == false ");
-
           JFrame window = new JFrame();
           window.setTitle("MyFoodSolver");//titel pa vinduet
           window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen

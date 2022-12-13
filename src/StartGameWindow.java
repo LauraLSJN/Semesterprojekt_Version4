@@ -13,16 +13,10 @@ public class StartGameWindow {
     private static Timer timer;
     static Size size;
     private static Input input; //Input fra brugeren
-    Game game;
-    Display d;
+
 
     JFrame window = new JFrame();
 
-public void windowDispose(boolean dispose ){
-    if (dispose) {
-        window.dispose();
-    }
-}
 
     //Laver Start knap
     public void StartBoks() {
@@ -36,7 +30,7 @@ public void windowDispose(boolean dispose ){
         startBtn.setPreferredSize(new Dimension(700, 500));//Storrelsen paa knappen
         // startBtn.setBackground(Color.green);//Farve paa knappen
         startBtn.addActionListener(e -> gamePanel.start());//Actionlistener naar knappen trykkes skal spillet starte --> void start
-       startBtn.addActionListener(e -> gamePanel.start());
+       //startBtn.addActionListener(e -> gamePanel.start());
 
 
 

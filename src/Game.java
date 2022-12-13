@@ -185,10 +185,11 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         if (tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0 && this.stopDrop == false) { //&& this.stopDrop == false
             this.stopDrop = true;
             removeFoodObjects();
-            if(isWon() == false) {
+                setLost(true);
+
+            if(isWon() == false && isLost() == true ) {
                 display.levelBoks(currentLevel, false);
                 display.dispose();
-                setLost(true);
             }
         }
 
