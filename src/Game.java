@@ -177,9 +177,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
                 System.out.println("currentLevel; " + currentLevel);
                 display.levelBoks(currentLevel, true);
                 display.dispose();
-
             }
-
         }
 
         if (tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0 && this.stopDrop == false) { //&& this.stopDrop == false
@@ -192,20 +190,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
                 display.dispose();
             }
         }
-
     }
-
-
-
-
-
-        /*
-        //vi kunne lave metode her i stedet for else.
-    public void removeAllFoodObjects(){
-        for (int i = 1; i < gameObject.size(); i++) {
-            gameObject.remove(i); //Fjerne dem der ikke er ramt fra ArrayListe
-        }
-    }*/
 
     //Metode til detection af hvorvidt firkanterne på displayet rammer hinanden
     public void detection() {

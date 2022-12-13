@@ -126,12 +126,7 @@ public class Display extends JFrame {
           JButton startBtn = new JButton("Klik her for at starte level " + level + " IGEN!");//Det som skla staa i vores startknap
           startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
           startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-          // jlabel.setHorizontalAlignment(SwingConstants.CENTER);
-          // startBtn.setForeground(Color.GREEN);//Farve paa tekst
-          //startBtn.setBounds(300,300,100,100);
 
-          //startBtn.setPreferredSize(new Dimension(100, 100));//Storrelsen paa knappen
-          // startBtn.setBackground(Color.green);//Farve paa knappen
 
           startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
           startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
