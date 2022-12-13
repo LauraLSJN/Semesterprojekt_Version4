@@ -337,6 +337,8 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         }
     }
 
+    /*
+
     public void cLevel(){
         this.currentLevel++;
         setWon(false);
@@ -356,7 +358,8 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
         }
     }
-    
+    */
+
     public boolean isWon() {
         return won;
     }
