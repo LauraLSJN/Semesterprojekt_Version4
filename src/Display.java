@@ -1,11 +1,6 @@
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-import java.util.TimerTask;
 
 public class Display extends JFrame {
     MyFrame myFrame;
@@ -30,12 +25,11 @@ public class Display extends JFrame {
         add(canvas);
         addKeyListener(input);
         pack();
-
         canvas.createBufferStrategy(3);
-
         setLocationRelativeTo(null);
         setVisible(true);
     }
+
 
 /*
     public void levelBoks(int level){
@@ -66,7 +60,7 @@ public class Display extends JFrame {
 
         JFrame window = new JFrame();
         window.setTitle("MyFoodSolver");//titel pa vinduet
-        StartGameWindow.GamePanel gamePanel = new StartGameWindow.GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+       GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
         window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
 
         //game.tekstBoks(graphics);
@@ -156,10 +150,10 @@ public class Display extends JFrame {
         }*/
 
         /*
-        if(game.isWon() == true){
+      /*  if(game.isWon() == true){
             setVisible(false);
-        }
-*/
+        }*/
+
 
 
 

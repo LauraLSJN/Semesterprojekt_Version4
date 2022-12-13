@@ -55,7 +55,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         input = new Input();
         size = new Size();
         display = new Display(size.getDisplayWidth(), size.getDisplayHeight(), input);//aendret fra w h Skærmstørrelse 700x500 x: 700, y:500
-
         //Tid
         tid = new ArrayList<>();
         tid.add(new Tid());
@@ -97,6 +96,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         }else if (currentLevel == 2){
             shoppingBaskets.add(new ShoppingBasket(50));
             gameObject.add(new PlayerObject(new Player(input), 5));
+            System.out.println(getGameObject());
             addFoodObjects();
 
         }
