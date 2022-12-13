@@ -41,7 +41,8 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
 //boolean test = false;
 
-    public Game() {
+    public Game(int currentLevel) {
+        this.currentLevel = currentLevel;
         this.pauseState = false;
         this.won = false;
         this.lost = false;
@@ -125,6 +126,12 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
                     System.out.println(this.won);
                     currentLevel++;
                     System.out.println("currentLevel; " + currentLevel);
+
+                    StartGameWindow startgamewindow = new StartGameWindow();//laver nyt objekt og laver intance
+                    startgamewindow.levelBoks(currentLevel);
+
+
+                   // display.levelBoks(currentLevel);
                 }
 
             }
@@ -254,8 +261,10 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             g.fillRect(tekstBoksX,tekstBoksY,tekstBoksWidth,tekstBoksHeight);
             g.setColor(Color.GREEN);
             g.drawString("DU HAR VUNDET",tekstBoksX+50,tekstBoksY+70);
-            //currentLevel++;
-            //System.out.println("CurrentLevel: " + currentLevel);
+
+
+
+
 
         }
         else if (isLost()){

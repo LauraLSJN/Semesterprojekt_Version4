@@ -34,6 +34,28 @@ public class Display extends JFrame {
         setVisible(true);
     }
 
+
+   /* public void levelBoks(int level){
+       // JFrame canvas = new JFrame();//tegner vinduet
+      //  canvas.setTitle("MyFoodSolver");//titel pa vinduet
+       // StartGameWindow.GamePanel gamePanel = new StartGameWindow.GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+      //  window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
+        StartGameWindow.GamePanel gamePanel = new StartGameWindow.GamePanel(this.canvas);
+
+        JButton startBtn = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
+        startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
+        // startBtn.setForeground(Color.GREEN);//Farve paa tekst
+        //startBtn.setPreferredSize(700, 80);//Storrelsen paa knappen
+        // startBtn.setBackground(Color.green);//Farve paa knappen
+        startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
+        //canvas.add(startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
+
+        //canvas.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
+        //canvas.pack();//tegner alt indhold
+       // canvas.setLocationRelativeTo(null);//Placerer vinduet
+        //canvas.setVisible(true);//gor vinduet synlig
+    }
+*/
     public void render(Game game){
         BufferStrategy bufferStartegy = canvas.getBufferStrategy();
         Graphics graphics = bufferStartegy.getDrawGraphics();
@@ -61,6 +83,8 @@ public class Display extends JFrame {
         //Anvender Lambda Expression
 
         game.tekstBoks(graphics);
+
+
 
 
             game.getGameObject().forEach(gameObject -> graphics.drawImage( //gameobject vi har foodobjekter og player i
