@@ -16,17 +16,17 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     private List<ShoppingBasket> shoppingBaskets;
     private List<Tid> tid;
     private Input input; //Input fra brugeren
-
     Random random = new Random();
     Size size;
     private boolean stopDrop;
 
     AttributedString attributedText;
     Font font = new Font("Monospaced", Font.BOLD, 15);
-
+   // Level level;
 
     boolean won;
     boolean lost;
+    boolean pauseState;
 
 
     int currentLevel=0;
@@ -42,6 +42,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 //boolean test = false;
 
     public Game() {
+        this.pauseState = false;
         this.won = false;
         this.lost = false;
       //  this.currentLevel = currentLevel;
@@ -58,7 +59,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         tid = new ArrayList<>();
         tid.add(new Tid());
 
-
         //Shoppingkurven
         shoppingBaskets = new ArrayList<>();
       //  shoppingBaskets.add(new ShoppingBasket());
@@ -69,7 +69,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         gameObject = new ArrayList<>();
         gameObject.add(new PlayerObject(new Player(input))); //playerobject skal være index 0 for at detection virker
         addFoodObjects();
-
 
         //Anvendes til kontrol
         System.out.println("GameObject Størrelse: " + gameObject.size());
@@ -100,7 +99,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     //Dropper foodoOjects
     public void dropFoodObjects() {
         int randomTal = random.nextInt(2000);
-        if(this.stopDrop != true && randomTal <= 25) {
+        if(this.stopDrop == false && randomTal <= 25) {
                 addFoodObjects();
         }
     }
@@ -108,35 +107,29 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     public void removeFoodObjects(){
             for (int i = 1; i < gameObject.size(); i++) {
                 gameObject.remove(i); //Fjerne dem der ikke er ramt fra ArrayListe
+                //System.out.println(getGameObject());
+                //System.out.println("FJERNER: " + getGameObject().get(i));
                // level.setNextLevel(1);
                 // removeAllFoodObjects();
                 tid.get(0).stopTid();
             }
         }
 
-       /* public void checkLevel(){
-        if (this.won == true && this.stopDrop == false && (shoppingBaskets.get(0).nowCollectedFood == shoppingBaskets.get(0).maxValue) )
-            currentLevel++;
-            System.out.println("currentLevel; " + currentLevel);
-        }*/
-
         public void checkStop(){
-       // checkLevel();
-            if ((shoppingBaskets.get(0).nowCollectedFood == shoppingBaskets.get(0).maxValue)  && this.stopDrop == false ) {
+        //checkLevel();
+            if (shoppingBaskets.get(0).nowCollectedFood == shoppingBaskets.get(0).maxValue) {
                 //addFoodObjects(); //Tilføjer nyt objekt til arrayliste hvis shoppingBasket ikke er lig maks
-                this.stopDrop = true;
                 removeFoodObjects();
-                setWon(true);
-                System.out.println(this.won);
+                if(this.stopDrop == false) {
+                    setWon(true);
+                    System.out.println(this.won);
+                    currentLevel++;
+                    System.out.println("currentLevel; " + currentLevel);
+                }
 
-               // currentLevel++;
-               // System.out.println("currentLevel; " + currentLevel);
-
-                //setTest(true);
             }
-            //setWon(false);
 
-            if((tid.get(0).getMinSecond() == 0) && (tid.get(0).getSecond() == 0) && (tid.get(0).getMinute() == 0) && this.stopDrop == false){
+            if(tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0){ //&& this.stopDrop == false
                 this.stopDrop = true;
                 removeFoodObjects();
                 setLost(true);
@@ -144,6 +137,8 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             }
 
         }
+
+
 
 
 
@@ -273,7 +268,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         }
     }
 
-    /*
     public void cLevel(){
         this.currentLevel++;
         setWon(false);
@@ -292,7 +286,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             this.currentLevel = currentLevel;
 
         }
-    }*/
+    }
     
     public boolean isWon() {
         return won;
