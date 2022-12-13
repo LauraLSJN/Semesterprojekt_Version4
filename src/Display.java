@@ -126,6 +126,8 @@ public class Display extends JFrame {
         //Anvender Lambda Expression
        // levelBoks(game.currentLevel);
 
+        drawCurrentLevel(graphics,game.toString());
+
             game.getGameObject().forEach(gameObject -> graphics.drawImage( //gameobject vi har foodobjekter og player i
                     gameObject.getSprite(),
                     gameObject.getPosition().getX(),
@@ -173,6 +175,15 @@ public class Display extends JFrame {
 
 
 
+
+    }
+
+    public void drawCurrentLevel(Graphics graphics, String StringCurrentLevel){
+        //graphics.setFont(font);
+        graphics.setColor(Color.LIGHT_GRAY);
+        graphics.fillRect(500,500,100,100);
+        graphics.setColor(Color.GREEN);
+        graphics.drawString(StringCurrentLevel,150,150);
 
     }
 
