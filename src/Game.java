@@ -69,7 +69,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         //Food og Player
         gameObject = new ArrayList<>();
         addPlayerLevel();
-       // gameObject.add(new PlayerObject(new Player(input),0)); //playerobject skal være index 0 for at detection virker
+       // gameObject.add(new PlayerObject(new Player(input),3)); //playerobject skal være index 0 for at detection virker
         addFoodObjects();
       //  addToLevels();
 
@@ -91,15 +91,13 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     }
 */
 
-    /**
-     * Virker ikke
-     */
+
 
     public void addPlayerLevel(){
         if(currentLevel == 0){
-            gameObject.add(new PlayerObject(new Player(input), 0));
-        } else if(currentLevel == 1){
             gameObject.add(new PlayerObject(new Player(input), 1));
+        } else if(currentLevel == 1){
+            gameObject.add(new PlayerObject(new Player(input), 3));
         } else if (currentLevel == 2){
             gameObject.add(new PlayerObject(new Player(input), 5));
         }else{

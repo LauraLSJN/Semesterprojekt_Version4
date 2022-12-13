@@ -26,15 +26,19 @@ public class PlayerObject extends GameObject {
 
     @Override
     public void update() {
-       speedX = speed;
-        // speedX = 0;
+      // speedX = speed;
+         speedX = 0;
         oldPosX = position.getX(); //Gemmer tidligere x koordinat
 
             if (controller.isRequestiongLeft()) {
-                speedX--;
+              // speedX = speedX - speed;
+               // speedX--;
+                speedX = speedX - this.speed;
         }
             if (controller.isRequestiongRight()) {
-                speedX++;
+              //  speedX++;
+                speedX = speedX + this.speed;
+              //  speedX = speedX + speed;
         }
         position.setX(oldPosX+ speedX); //Sætter ny x-koordinat
     }
