@@ -9,6 +9,9 @@ import java.util.TimerTask;
 
 public class Display extends JFrame {
     MyFrame myFrame;
+
+
+
     private Canvas canvas;
     Image img = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingMarket.jpg"); //Erstat stigen, men din egen sti
     //Anna sti: "/Users/annab/Desktop/shoppingMarket.jpg"
@@ -34,13 +37,15 @@ public class Display extends JFrame {
         setVisible(true);
     }
 
-
-   /* public void levelBoks(int level){
+/*
+    public void levelBoks(int level){
        // JFrame canvas = new JFrame();//tegner vinduet
       //  canvas.setTitle("MyFoodSolver");//titel pa vinduet
        // StartGameWindow.GamePanel gamePanel = new StartGameWindow.GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
       //  window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
-        StartGameWindow.GamePanel gamePanel = new StartGameWindow.GamePanel(this.canvas);
+       // StartGameWindow.GamePanel gamePanel = new StartGameWindow.GamePanel(canvas);
+
+        StartGameWindow.GamePanel = new StartGameWindow.GamePanel();
 
         JButton startBtn = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
         startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
@@ -54,8 +59,8 @@ public class Display extends JFrame {
         //canvas.pack();//tegner alt indhold
        // canvas.setLocationRelativeTo(null);//Placerer vinduet
         //canvas.setVisible(true);//gor vinduet synlig
-    }
-*/
+    }*/
+
     public void render(Game game){
         BufferStrategy bufferStartegy = canvas.getBufferStrategy();
         Graphics graphics = bufferStartegy.getDrawGraphics();
@@ -65,7 +70,7 @@ public class Display extends JFrame {
 
 
 
-       // game.tekstBoks();
+        //game.tekstBoks(graphics);
       /* if (game.isTest()){
            //game.getSprite();
            graphics.setColor(Color.black);
@@ -83,6 +88,7 @@ public class Display extends JFrame {
         //Anvender Lambda Expression
 
         game.tekstBoks(graphics);
+       // levelBoks(game.currentLevel);
 
 
 

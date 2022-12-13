@@ -17,14 +17,14 @@ public class FoodObjects extends GameObject { //globale variabler som vi bruger
 
     //Konstruktør -> Sætter position
     //Indsæt currentSpeed, som parameter
-    public FoodObjects(int speed, boolean randomPrice){ //herunder bliver værdierne som vi gerne vil have blive sat
+    public FoodObjects(int speed, boolean randomPrice, boolean randomColor){ //herunder bliver værdierne som vi gerne vil have blive sat
         farve = new Farve();
         position = new Position(random.nextInt(size.getDisplayWidth()- size.getFoodObjectWidth()),0 ); //-gameObject size, så de ikke placeres udenfor display
         isRandomPrice(randomPrice);
         //price.setValuePrice(random.nextInt(price.getMinPrice(),price.getMaxPrice()));
        // price.setValuePrice(5);
         textInImage = String.valueOf(getPrice().getValuePrice()); //Henter valuePrice
-        setColor();
+        setColor(randomColor);
         this.speed = speed;
        // this.speed = 1;
         //Level -> int currentSpeed -> Fra level liste
@@ -74,11 +74,16 @@ public class FoodObjects extends GameObject { //globale variabler som vi bruger
 
     }
 
-    public void setColor(){
+
+    public void setColor(boolean randomColor){
+        if (randomColor){
+            this.colorBoks = farve.randomColor;
+        }else {
         if(getPrice().getValuePrice() >= 0){ //hvis prisen er lig eller mindre end 0
             this.colorBoks = farve.plusFarve; //grøn farve
         } else{
             this.colorBoks = farve.minusFarve; //rød farve
+        }
         }
     }
 
