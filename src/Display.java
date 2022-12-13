@@ -94,7 +94,6 @@ public class Display extends JFrame {
 
         }
 
-
         if(game.currentLevel > 0){
             game.getTid().forEach(tid -> graphics.drawImage(
                     tid.getSprite(),
