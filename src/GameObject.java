@@ -11,6 +11,7 @@ public abstract class GameObject {
         size = new Size();
         randomColor = new Farve();
         price = new Price();
+
     }
 
     public abstract Image getSprite();

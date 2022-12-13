@@ -98,12 +98,14 @@ public void windowDispose(boolean dispose ){
         void start() {
             timer.start();//Henter knappen som vi kan trykke paa saa vi bliver fort videre til naeste trin
            // Game game = new Game();//Henter game
+
             new Thread(new GameLoop(new Game(0))).start();//starter spillet
 
         }
 
         void level1(int currentlevel){
             timer.start();
+
 
             new Thread(new GameLoop(new Game(currentlevel))).start();//starter spillet
 

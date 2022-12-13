@@ -63,15 +63,18 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         //Shoppingkurven
         shoppingBaskets = new ArrayList<>();
       //  shoppingBaskets.add(new ShoppingBasket());
-        shoppingBasketsLevel();
+        //shoppingBasketsLevel();
         System.out.println("Test");
 
         //Food og Player
         gameObject = new ArrayList<>();
-        addPlayerLevel();
+        //addPlayerLevel();
        // gameObject.add(new PlayerObject(new Player(input),3)); //playerobject skal være index 0 for at detection virker
-        addFoodObjects();
-      //  addToLevels();
+
+      // addToLevels();
+        addLevels();
+        //addFoodObjects();
+
 
         //Anvendes til kontrol
         System.out.println("GameObject Størrelse: " + gameObject.size());
@@ -91,6 +94,25 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     }
 */
 
+    public void addLevels(){
+        if(currentLevel == 0){
+            shoppingBaskets.add(new ShoppingBasket(5));
+            gameObject.add(new PlayerObject(new Player(input), 1));
+            addFoodObjects();
+
+        } else if( currentLevel == 1){
+            shoppingBaskets.add(new ShoppingBasket(30));
+            gameObject.add(new PlayerObject(new Player(input), 3));
+            addFoodObjects();
+
+        }else if (currentLevel == 2){
+            shoppingBaskets.add(new ShoppingBasket(50));
+            gameObject.add(new PlayerObject(new Player(input), 5));
+            addFoodObjects();
+
+        }
+    }
+
 
 
     public void addPlayerLevel(){
@@ -105,7 +127,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         }
     }
 
-    public void shoppingBasketsLevel(){
+   /* public void shoppingBasketsLevel(){
         if(currentLevel == 0){
             shoppingBaskets.add(new ShoppingBasket(5));
         } else if(currentLevel == 1){
@@ -113,7 +135,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         } else if (currentLevel == 2){
             shoppingBaskets.add(new ShoppingBasket(50));
         }
-    }
+    }*/
 
     //Tilføjer foodObjects til gameObject arraylisten
     public void addFoodObjects() {

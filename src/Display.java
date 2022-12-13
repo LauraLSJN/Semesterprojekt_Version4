@@ -132,6 +132,10 @@ public class Display extends JFrame {
             bufferStartegy.show();
         }*/
 
+        if(game.isWon() == true){
+            setVisible(false);
+        }
+
 
 
 
