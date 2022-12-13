@@ -38,10 +38,6 @@ public class Display extends JFrame {
         BufferStrategy bufferStartegy = canvas.getBufferStrategy();
         Graphics graphics = bufferStartegy.getDrawGraphics();
 
-
-
-
-
         graphics.drawImage(img, 0, 0,700,500,null); //"Tegner" baggrunden som billedet
         //graphics.fillRect(0, 0, canvas.getWidth(),canvas.getHeight()); //Kan anvendes hvis billede ikke virker
 
@@ -100,6 +96,8 @@ public class Display extends JFrame {
                     tid.position.getX(),
                     tid.position.getY(), null
             ));
+
+            game.tekstBoks(graphics);
 
             graphics.dispose();
             bufferStartegy.show();
