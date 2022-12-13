@@ -309,29 +309,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         }
     }
 
-    /*
-
-    public void cLevel(){
-        this.currentLevel++;
-        setWon(false);
-    }
-
-    public void checkLevel(){
-        if(won == true){
-            //currentLevel++;
-            //System.out.println("CurrentLevel: " + currentLevel);
-            setWon(false);
-        }
-
-
-        if(lost == true){
-
-            this.currentLevel = currentLevel;
-
-        }
-    }
-    */
-
     public boolean isWon() {
         return won;
     }
