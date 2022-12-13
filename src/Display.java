@@ -76,13 +76,6 @@ public class Display extends JFrame {
           //window.add(jlabel);
           jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
 
-        /*
-        JLabel label = new JLabel("<html> <div style='text-align: center;'>  Hej </div></html");
-        label.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
-       // label.setHorizontalAlignment(SwingConstants.CENTER);
-        gamePanel.setAlignmentX(Component.TOP_ALIGNMENT);
-        gamePanel.add(label);
-*/
 
           //game.tekstBoks(graphics);
           JButton startBtn = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
