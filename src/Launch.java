@@ -6,7 +6,10 @@ public class Launch {
         /*if(((MyFrame) new MyFrame()).isPressed){
             new Thread(new GameLoop(new Game())).start();
         }*/
-        new Thread(new GameLoop(new Game())).start();
+        //new Thread(new GameLoop(new Game())).start();
+
+        StartGameWindow startgamewindow = new StartGameWindow();//laver nyt objekt og laver intance
+        startgamewindow.StartBoks();//Henter startknappen
 
        // Level level = new Level(0);
         //level.setup();

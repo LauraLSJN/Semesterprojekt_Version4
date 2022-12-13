@@ -62,7 +62,6 @@ public class Display extends JFrame {
 
         game.tekstBoks(graphics);
 
-        if(game.currentLevel == 0) {
 
             game.getGameObject().forEach(gameObject -> graphics.drawImage( //gameobject vi har foodobjekter og player i
                     gameObject.getSprite(),
@@ -87,21 +86,21 @@ public class Display extends JFrame {
 
             graphics.dispose();
             bufferStartegy.show();
+            //game.tekstBoks(graphics);
 
-        }
 
-        if(game.currentLevel > 0){
+      /*  if(game.currentLevel > 0){
             game.getTid().forEach(tid -> graphics.drawImage(
                     tid.getSprite(),
                     tid.position.getX(),
                     tid.position.getY(), null
             ));
 
-            game.tekstBoks(graphics);
+            //game.tekstBoks(graphics);
 
             graphics.dispose();
             bufferStartegy.show();
-        }
+        }*/
 
 
 

@@ -72,7 +72,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         System.out.println("GameObject Størrelse: " + gameObject.size());
         System.out.println(getGameObject());
 
-
     }
 
     public void shoppingBasketsLevel(){
