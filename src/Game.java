@@ -104,6 +104,8 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             System.out.println(getGameObject());
             addFoodObjects();
 
+        }else {
+            System.out.println("addLevels: else ");
         }
     }
 
@@ -139,7 +141,10 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             gameObject.add(new FoodObjects(2,false,false));
         } else if (currentLevel == 2){
             gameObject.add(new FoodObjects(3,true,true));
+        }else {
+            System.out.println("addFoodObject: else ");
         }
+
 
         //gameObject.add(new FoodObjects());
         //gameObject.add(new FoodObjects());

@@ -7,7 +7,6 @@ public class Display extends JFrame {
 
 
 
-
     private Canvas canvas;
     Image img = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingMarket.jpg"); //Erstat stigen, men din egen sti
     //Anna sti: "/Users/annab/Desktop/shoppingMarket.jpg"
@@ -31,6 +30,31 @@ public class Display extends JFrame {
         setVisible(true);
     }
 
+
+/*
+    public void levelBoks(int level){
+       // JFrame canvas = new JFrame();//tegner vinduet
+      //  canvas.setTitle("MyFoodSolver");//titel pa vinduet
+       // StartGameWindow.GamePanel gamePanel = new StartGameWindow.GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+      //  window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
+       // StartGameWindow.GamePanel gamePanel = new StartGameWindow.GamePanel(canvas);
+
+        StartGameWindow.GamePanel = new StartGameWindow.GamePanel();
+
+        JButton startBtn = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
+        startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
+        // startBtn.setForeground(Color.GREEN);//Farve paa tekst
+        //startBtn.setPreferredSize(700, 80);//Storrelsen paa knappen
+        // startBtn.setBackground(Color.green);//Farve paa knappen
+        startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
+        //canvas.add(startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
+
+        //canvas.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
+        //canvas.pack();//tegner alt indhold
+       // canvas.setLocationRelativeTo(null);//Placerer vinduet
+        //canvas.setVisible(true);//gor vinduet synlig
+    }*/
+
     public void levelBoks(int level){
         // JFrame window = new JFrame();//tegner vinduet
         JFrame window = new JFrame();
@@ -38,29 +62,56 @@ public class Display extends JFrame {
         window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
         GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
         window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
-        gamePanel.jLabel = new JLabel();
-        gamePanel.jLabel.setText("Du har vundet");
-        JButton startBtn = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
+
+       // gamePanel.setLayout(new BoxLayout(gamePanel, BoxLayout.PAGE_AXIS));
+        JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet <BR> </div></html>", SwingConstants.CENTER ); //, SwingConstants.CENTER
+       // JLabel jlabel = new JLabel("<html> Tillykke <BR> Du har vundet </html> ");
+        //jlabel.setHorizontalAlignment(SwingConstants.CENTER);
+        //jlabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //jlabel.setVerticalAlignment(SwingConstants.CENTER);
+        jlabel.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
+        gamePanel.add(jlabel);
+        //window.add(jlabel);
+        jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
+
+        /*
+        JLabel label = new JLabel("<html> <div style='text-align: center;'>  Hej </div></html");
+        label.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
+       // label.setHorizontalAlignment(SwingConstants.CENTER);
+        gamePanel.setAlignmentX(Component.TOP_ALIGNMENT);
+        gamePanel.add(label);
+*/
+
+        //game.tekstBoks(graphics);
+        JButton startBtn = new JButton("Klik her for at starte level " + level + "!" );//Det som skla staa i vores startknap
+       // gamePanel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        //startBtn.setLayout(new BoxLayout(startBtn, BoxLayout.LINE_AXIS));
+       // startBtn.setLocation(400,400);
+       // startBtn.setSize(50,50);
+        //startBtn.setHorizontalTextPosition(SwingConstants.CENTER);
+       // startBtn.setBounds(500,500,100,100);
         startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
+        startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+       // jlabel.setHorizontalAlignment(SwingConstants.CENTER);
         // startBtn.setForeground(Color.GREEN);//Farve paa tekst
+        //startBtn.setBounds(300,300,100,100);
 
         //startBtn.setPreferredSize(new Dimension(100, 100));//Storrelsen paa knappen
         // startBtn.setBackground(Color.green);//Farve paa knappen
-        //startBtn.setBounds(100,100,200,200);
-        gamePanel.add(startBtn);
-        gamePanel.add(gamePanel.jLabel);
-
 
         startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
+        startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
+        gamePanel.add(startBtn,BorderLayout.CENTER);
+
+
         //startBtn.setBounds(300,300,100,100);
-        //window.add(startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
+       // gamePanel.add( startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
 
 
         window.pack();//tegner alt indhold
         window.setLocationRelativeTo(null);//Placerer vinduet
         window.setVisible(true);//gor vinduet synlig
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
     public void render(Game game){
@@ -68,6 +119,8 @@ public class Display extends JFrame {
         Graphics graphics = bufferStartegy.getDrawGraphics();
         graphics.drawImage(img, 0, 0,700,500,null); //"Tegner" baggrunden som billedet
         //graphics.fillRect(0, 0, canvas.getWidth(),canvas.getHeight()); //Kan anvendes hvis billede ikke virker
+
+
 
         //Henter gameObjects (FoodObjcts & PlayerObjects) og tegner det
         //Anvender Lambda Expression
@@ -93,7 +146,7 @@ public class Display extends JFrame {
                     tid.position.getX(),
                     tid.position.getY(), null
             ));
-        drawCurrentLevel(graphics, game.toString());
+
             graphics.dispose();
             bufferStartegy.show();
             //game.tekstBoks(graphics);
@@ -112,25 +165,14 @@ public class Display extends JFrame {
             bufferStartegy.show();
         }*/
 
-
-        if(game.isWon() == true){
+        /*
+      /*  if(game.isWon() == true){
             setVisible(false);
-        }
+        }*/
 
 
 
 
-
-
-
-    }
-
-    public void drawCurrentLevel(Graphics graphics, String StringCurrentLevel){
-        //graphics.setFont(font);
-        graphics.setColor(Color.LIGHT_GRAY);
-        graphics.fillRect(500,500,100,100);
-        graphics.setColor(Color.GREEN);
-        graphics.drawString(StringCurrentLevel,150,150);
 
     }
 
