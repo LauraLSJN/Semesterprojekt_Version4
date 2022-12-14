@@ -15,7 +15,7 @@ public class GamePanel extends JPanel {
 
     void start() {
         timer.start();//Henter knappen som vi kan trykke paa saa vi bliver fort videre til naeste trin
-        new Thread(new GameLoop(new Game(5))).start();//starter spillet
+        new Thread(new GameLoop(new Game(1))).start();//starter spillet
 
     }
 
