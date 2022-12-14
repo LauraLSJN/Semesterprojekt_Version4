@@ -44,6 +44,12 @@ public class FoodObjects extends GameObject { //globale variabler som vi bruger
         int oldPos = position.getY();
         //Set metode til at sætte den ny y-koordinat
         position.setY(oldPos+speed);
+
+
+
+
+
+
         //System.out.println("SPEED: " + speed);
 
         //Print af FoodObjects position

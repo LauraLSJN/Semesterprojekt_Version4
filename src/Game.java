@@ -90,14 +90,10 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             gameObject.add(new PlayerObject(new Player(input), 1));
             addFoodObjects();
 
-
-
-
         } else if (currentLevel == 1) {
             shoppingBaskets.add(new ShoppingBasket(5));
             gameObject.add(new PlayerObject(new Player(input), 3));
             addFoodObjects();
-
 
         } else if (currentLevel == 2) {
             shoppingBaskets.add(new ShoppingBasket(5));
@@ -105,8 +101,13 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             System.out.println(getGameObject());
             addFoodObjects();
 
+        }else if(currentLevel == 3){
+            shoppingBaskets.add(new ShoppingBasket(100));
+            gameObject.add(new PlayerObject(new Player(input), 4));
+            addFoodObjects();
+            addFoodObjects();
+            addFoodObjects();
         } else {
-           // System.exit(0);
             System.out.println("addLevels: else ");
         }
     }
@@ -140,9 +141,11 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         if (currentLevel == 0) {
             gameObject.add(new FoodObjects(1, false, false));
         } else if (currentLevel == 1) {
-            gameObject.add(new FoodObjects(2, false, false));
+            gameObject.add(new FoodObjects(2, true, false));
         } else if (currentLevel == 2) {
-            gameObject.add(new FoodObjects(3, false, true));
+            gameObject.add(new FoodObjects(3, true, true));
+        }else if (currentLevel == 3){
+            gameObject.add(new FoodObjects(4, true, true));
         } else {
             System.out.println("addFoodObject: else ");
          //   System.exit(0);
@@ -163,7 +166,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     }
 
     public void removeFoodObjects() {
-        for (int i = 1; i < gameObject.size(); i++) {
+        for (int i = 0; i < gameObject.size(); i++) {
             gameObject.remove(i); //Fjerne dem der ikke er ramt fra ArrayListe
             //System.out.println(getGameObject());
             //System.out.println("FJERNER: " + getGameObject().get(i));

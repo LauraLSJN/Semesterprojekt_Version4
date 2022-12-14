@@ -11,7 +11,7 @@ public class Tid {
 
     int minSecond;
     int second;
-    int minute=2;
+    int minute = 2;
 
 
     String ddSecond;
