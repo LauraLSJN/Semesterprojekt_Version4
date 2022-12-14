@@ -40,12 +40,7 @@ public class Display extends JFrame {
 
       if (won) {
 
-          if(level <5) {
-             // window.setTitle("MyFoodSolver");//titel pa vinduet
-             // window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
-              //GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
-              //window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
-
+          if(level <6) {
               JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
 
               //jlabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -62,15 +57,7 @@ public class Display extends JFrame {
               startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
               gamePanel.add(startBtn, BorderLayout.CENTER); //tegner vores knap med alt det forrige indhold som str, farve og font
 
-            //  window.pack();//tegner alt indhold
-           //   window.setLocationRelativeTo(null);//Placerer vinduet
-            //  window.setVisible(true);//gor vinduet synlig
-          }else if (level == 5){
-
-             // window.setTitle("MyFoodSolver");//titel pa vinduet
-            //  window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
-            //  GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
-            //  window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
+          }else if (level == 6){
 
               JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet HELE SPILLET <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
 
@@ -88,19 +75,9 @@ public class Display extends JFrame {
               startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
               gamePanel.add(startBtn, BorderLayout.CENTER); //tegner vores knap med alt det forrige indhold som str, farve og font
 
-            //  window.pack();//tegner alt indhold
-             // window.setLocationRelativeTo(null);//Placerer vinduet
-             // window.setVisible(true);//gor vinduet synlig
           }
 
       } else if (won == false ){
-          System.out.println("won == false ");
-
-         // window.setTitle("MyFoodSolver");//titel pa vinduet
-         // window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
-         // GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
-          //window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
-
           JLabel jlabel = new JLabel("<html><div style='text-align: center;'> ØV BØV <BR> Du har tabt <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
           jlabel.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
           gamePanel.add(jlabel);
@@ -113,11 +90,6 @@ public class Display extends JFrame {
           startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
           startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
           gamePanel.add(startBtn, BorderLayout.CENTER);
-
-         // window.pack();//tegner alt indhold
-         // window.setLocationRelativeTo(null);//Placerer vinduet
-         // window.setVisible(true);//gor vinduet synlig
-
       }
 
         window.pack();//tegner alt indhold
@@ -126,8 +98,6 @@ public class Display extends JFrame {
     }
 
     public void render(Game game){
-
-
        BufferStrategy bufferStartegy = canvas.getBufferStrategy();
         Graphics graphics = bufferStartegy.getDrawGraphics();
         graphics.drawImage(img, 0, 0,700,500,null); //"Tegner" baggrunden som billedet

@@ -89,13 +89,13 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             addFoodObjects();
 
         } else if (currentLevel == 2) {
-            shoppingBaskets.add(new ShoppingBasket(5));
-            gameObject.add(new PlayerObject(new Player(input), 3));
+            shoppingBaskets.add(new ShoppingBasket(30));
+            gameObject.add(new PlayerObject(new Player(input), 2));
             addFoodObjects();
 
         } else if (currentLevel == 3) {
-            shoppingBaskets.add(new ShoppingBasket(5));
-            gameObject.add(new PlayerObject(new Player(input), 5));
+            shoppingBaskets.add(new ShoppingBasket(50));
+            gameObject.add(new PlayerObject(new Player(input), 3));
             System.out.println(getGameObject());
             addFoodObjects();
 
@@ -105,7 +105,15 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             addFoodObjects();
             addFoodObjects();
             addFoodObjects();
-        } else {
+        } else if(currentLevel == 5) {
+            shoppingBaskets.add(new ShoppingBasket(150));
+            gameObject.add(new PlayerObject(new Player(input), 5));
+            addFoodObjects();
+            addFoodObjects();
+            addFoodObjects();
+            addFoodObjects();
+            addFoodObjects();
+        }else {
             System.out.println("addLevels: else ");
         }
 
@@ -145,7 +153,9 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             gameObject.add(new FoodObjects(3, true, true));
         }else if (currentLevel == 4){
             gameObject.add(new FoodObjects(4, true, true));
-        } else {
+        } else if (currentLevel == 5) {
+            gameObject.add(new FoodObjects(5, true, true));
+        }else {
             System.out.println("addFoodObject: else ");
          //   System.exit(0);
         }
