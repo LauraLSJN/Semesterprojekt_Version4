@@ -33,16 +33,18 @@ public class Display extends JFrame {
     public void levelBoks(int level, boolean won ){
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        window.setTitle("MyFoodSolver");//titel pa vinduet
+        window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
+        GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+        window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
 
       if (won) {
 
           if(level <5) {
-
-
-              window.setTitle("MyFoodSolver");//titel pa vinduet
-              window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
-              GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
-              window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
+             // window.setTitle("MyFoodSolver");//titel pa vinduet
+             // window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
+              //GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+              //window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
 
               JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
 
@@ -60,15 +62,15 @@ public class Display extends JFrame {
               startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
               gamePanel.add(startBtn, BorderLayout.CENTER); //tegner vores knap med alt det forrige indhold som str, farve og font
 
-              window.pack();//tegner alt indhold
-              window.setLocationRelativeTo(null);//Placerer vinduet
-              window.setVisible(true);//gor vinduet synlig
+            //  window.pack();//tegner alt indhold
+           //   window.setLocationRelativeTo(null);//Placerer vinduet
+            //  window.setVisible(true);//gor vinduet synlig
           }else if (level == 5){
 
-              window.setTitle("MyFoodSolver");//titel pa vinduet
-              window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
-              GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
-              window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
+             // window.setTitle("MyFoodSolver");//titel pa vinduet
+            //  window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
+            //  GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+            //  window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
 
               JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet HELE SPILLET <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
 
@@ -86,17 +88,18 @@ public class Display extends JFrame {
               startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
               gamePanel.add(startBtn, BorderLayout.CENTER); //tegner vores knap med alt det forrige indhold som str, farve og font
 
-              window.pack();//tegner alt indhold
-              window.setLocationRelativeTo(null);//Placerer vinduet
-              window.setVisible(true);//gor vinduet synlig
+            //  window.pack();//tegner alt indhold
+             // window.setLocationRelativeTo(null);//Placerer vinduet
+             // window.setVisible(true);//gor vinduet synlig
           }
+
       } else if (won == false ){
           System.out.println("won == false ");
 
-          window.setTitle("MyFoodSolver");//titel pa vinduet
-          window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
-          GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
-          window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
+         // window.setTitle("MyFoodSolver");//titel pa vinduet
+         // window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
+         // GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+          //window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
 
           JLabel jlabel = new JLabel("<html><div style='text-align: center;'> ØV BØV <BR> Du har tabt <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
           jlabel.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
@@ -111,11 +114,15 @@ public class Display extends JFrame {
           startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
           gamePanel.add(startBtn, BorderLayout.CENTER);
 
-          window.pack();//tegner alt indhold
-          window.setLocationRelativeTo(null);//Placerer vinduet
-          window.setVisible(true);//gor vinduet synlig
+         // window.pack();//tegner alt indhold
+         // window.setLocationRelativeTo(null);//Placerer vinduet
+         // window.setVisible(true);//gor vinduet synlig
 
       }
+
+        window.pack();//tegner alt indhold
+        window.setLocationRelativeTo(null);//Placerer vinduet
+        window.setVisible(true);//gor vinduet synlig
     }
 
     public void render(Game game){
