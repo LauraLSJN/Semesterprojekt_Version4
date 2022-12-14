@@ -9,24 +9,10 @@ import javax.swing.Timer;
 
 public class StartGameWindow {
 
-    public static GamePanel GamePanel;
-    private static Timer timer;
-    static Size size;
-    private static Input input; //Input fra brugeren
-    Game game;
-    Display d;
-
-    JFrame window = new JFrame();
-
-public void windowDispose(boolean dispose ){
-    if (dispose) {
-        window.dispose();
-    }
-}
 
     //Laver Start knap
     public void StartBoks() {
-       // JFrame window = new JFrame();//tegner vinduet
+        JFrame window = new JFrame();//tegner vinduet
         window.setTitle("MyFoodSolver");//titel pa vinduet
         GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
         window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
@@ -36,7 +22,10 @@ public void windowDispose(boolean dispose ){
         startBtn.setPreferredSize(new Dimension(700, 500));//Storrelsen paa knappen
         // startBtn.setBackground(Color.green);//Farve paa knappen
         startBtn.addActionListener(e -> gamePanel.start());//Actionlistener naar knappen trykkes skal spillet starte --> void start
-       //startBtn.addActionListener(e -> gamePanel.start());
+
+
+
+
         window.add(startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
         window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
         window.pack();//tegner alt indhold

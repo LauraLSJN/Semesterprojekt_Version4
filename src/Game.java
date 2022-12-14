@@ -29,18 +29,13 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     boolean pauseState;
 
 
-    @Override
-    public String toString() {
-        return "CurrentLevel: " + currentLevel;
-    }
-
-    int currentLevel=0;
+    int currentLevel = 0;
     // creating a My HashTable Dictionary
-   // Hashtable<Integer, String> gameLevel = new Hashtable<String, String>();
+    // Hashtable<Integer, String> gameLevel = new Hashtable<String, String>();
 
-    public void createLevels(){
-  //  gameLevel.put(1, "Level 1");
-   // gameLevel.put("2", "Level 2");
+    public void createLevels() {
+        //  gameLevel.put(1, "Level 1");
+        // gameLevel.put("2", "Level 2");
     }
 
 
@@ -170,50 +165,41 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             }
         }
 
-        public void checkStop(){
+    public void checkStop() {
         //checkLevel();
-            if (shoppingBaskets.get(0).nowCollectedFood == shoppingBaskets.get(0).maxValue) {
-                //addFoodObjects(); //Tilføjer nyt objekt til arrayliste hvis shoppingBasket ikke er lig maks
-                removeFoodObjects();
-                if(this.stopDrop == false) {
-                    setWon(true);
-                    System.out.println(this.won);
-                    currentLevel++;
-                    System.out.println("currentLevel; " + currentLevel);
-                    display.dispose();
-                    display.levelBoks(currentLevel);
-
-                }
-
+        if (shoppingBaskets.get(0).nowCollectedFood == shoppingBaskets.get(0).maxValue) {
+            //addFoodObjects(); //Tilføjer nyt objekt til arrayliste hvis shoppingBasket ikke er lig maks
+            removeFoodObjects();
+            if (this.stopDrop == false) {
+                setWon(true);
+                System.out.println(this.won);
+                currentLevel++;
+                System.out.println("currentLevel; " + currentLevel);
+                display.levelBoks(currentLevel, true);
+                display.dispose();
             }
+        }
 
-            if(tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0){ //&& this.stopDrop == false
-                this.stopDrop = true;
-                removeFoodObjects();
+        if (tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0 && this.stopDrop == false) { //&& this.stopDrop == false
+            this.stopDrop = true;
+            removeFoodObjects();
                 setLost(true);
                 //setTest(true);
             }
 
+            if(isWon() == false && isLost() == true ) {
+                display.levelBoks(currentLevel, false);
+                display.dispose();
+            }
         }
-
-
-
-
-
-        /*
-        //vi kunne lave metode her i stedet for else.
-    public void removeAllFoodObjects(){
-        for (int i = 1; i < gameObject.size(); i++) {
-            gameObject.remove(i); //Fjerne dem der ikke er ramt fra ArrayListe
-        }
-    }*/
+    }
 
     //Metode til detection af hvorvidt firkanterne på displayet rammer hinanden
     public void detection() {
         for (int x = 1; x < gameObject.size(); x++) {
             if ((gameObject.get(x).getPosition().getX() >= (gameObject.get(0).getPosition().getX() - 30)) // food x >= player x - 30
                     && (gameObject.get(x).getPosition().getX() <= (gameObject.get(0).getPosition().getX() + size.getPlayerObjectWidth() + 20)) //food x <= player x+ size + 20
-                    && ((gameObject.get(x).getPosition().getY() + size.getFoodObjectHeight()) >= gameObject.get(0).getPosition().getY()+5) // food y + size >= player y +5
+                    && ((gameObject.get(x).getPosition().getY() + size.getFoodObjectHeight()) >= gameObject.get(0).getPosition().getY() + 5) // food y + size >= player y +5
                     && ((gameObject.get(x).getPosition().getY() + size.getFoodObjectHeight()) <= (gameObject.get(0).getPosition().getY() + size.getPlayerObjectHeight() + 20)) //food y <= player y + size + 20
                     && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) >= (gameObject.get(0).getPosition().getX() - 35)) //food x + size >= player x -35
                     && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) <= (gameObject.get(0).getPosition().getX() + size.getFoodObjectWidth() + 60)) //food x + size <= player x + size + 60
@@ -240,7 +226,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
     public void detectionOutOfDisplay() {
         for (int i = 1; i < gameObject.size(); i++) {
-            if (gameObject.get(i).getPosition().getY() >= gameObject.get(0).getPosition().getY()+ size.getPlayerObjectHeight()) { //food y >= player y + player height
+            if (gameObject.get(i).getPosition().getY() >= gameObject.get(0).getPosition().getY() + size.getPlayerObjectHeight()) { //food y >= player y + player height
                 gameObject.remove(i);
             }
 

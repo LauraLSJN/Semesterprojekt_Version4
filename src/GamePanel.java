@@ -4,7 +4,6 @@ import java.awt.event.ActionListener;
 //Denne classe er n'dvendig for at tegne classen
 public class GamePanel extends JPanel {
     JFrame window;
-    JLabel jLabel;
     private static Timer timer;
 
 
