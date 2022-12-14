@@ -24,6 +24,11 @@ public class Display extends JFrame {
         canvas.setFocusable(false);
         add(canvas);
         addKeyListener(input);
+
+        /*Button b = new Button("Klik her");
+        b.setBounds(300,300,100,100);*/
+
+
         pack();
         canvas.createBufferStrategy(3);
         setLocationRelativeTo(null);
@@ -120,6 +125,8 @@ public class Display extends JFrame {
         graphics.drawImage(img, 0, 0,700,500,null); //"Tegner" baggrunden som billedet
         //graphics.fillRect(0, 0, canvas.getWidth(),canvas.getHeight()); //Kan anvendes hvis billede ikke virker
 
+        paint(graphics);
+
 
 
         //Henter gameObjects (FoodObjcts & PlayerObjects) og tegner det
@@ -127,6 +134,7 @@ public class Display extends JFrame {
        // levelBoks(game.currentLevel);
 
         drawCurrentLevel(graphics,game.toString());
+        game.tekstBoks(graphics);
 
             game.getGameObject().forEach(gameObject -> graphics.drawImage( //gameobject vi har foodobjekter og player i
                     gameObject.getSprite(),
@@ -173,6 +181,9 @@ public class Display extends JFrame {
         }*/
 
 
+if (game.isWon() == true){
+    graphics.dispose();
+}
 
 
 
@@ -185,6 +196,16 @@ public class Display extends JFrame {
         graphics.setColor(Color.GREEN);
         graphics.drawString(StringCurrentLevel,150,150);
 
+    }
+
+
+    @Override
+    public void paint(Graphics g){
+        JButton button = new JButton();
+        button.isDefaultButton();
+        button.setBounds(300,300,100,100);
+        button.setForeground(Color.black);
+        button.setText("KNAP");
     }
 
 

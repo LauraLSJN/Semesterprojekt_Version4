@@ -180,8 +180,9 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
                     System.out.println(this.won);
                     currentLevel++;
                     System.out.println("currentLevel; " + currentLevel);
-                    display.levelBoks(currentLevel);
                     display.dispose();
+                    display.levelBoks(currentLevel);
+
                 }
 
             }
