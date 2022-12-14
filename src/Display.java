@@ -63,7 +63,6 @@ public class Display extends JFrame {
     public void levelBoks(int level, boolean won ){
         // JFrame window = new JFrame();//tegner vinduet
       if (won) {
-
           JFrame window = new JFrame();
           window.setTitle("MyFoodSolver");//titel pa vinduet
           window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
@@ -114,7 +113,7 @@ public class Display extends JFrame {
           window.setLocationRelativeTo(null);//Placerer vinduet
           window.setVisible(true);//gor vinduet synlig
 
-      } else if (won == false ){
+      } else if (won == false ){ //won == false
           System.out.println("won == false ");
           JFrame window = new JFrame();
           window.setTitle("MyFoodSolver");//titel pa vinduet
@@ -151,7 +150,7 @@ public class Display extends JFrame {
         graphics.drawImage(img, 0, 0,700,500,null); //"Tegner" baggrunden som billedet
         //graphics.fillRect(0, 0, canvas.getWidth(),canvas.getHeight()); //Kan anvendes hvis billede ikke virker
 
-        paint(graphics);
+        //paint(graphics);
 
 
 

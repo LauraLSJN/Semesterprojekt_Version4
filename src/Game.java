@@ -29,13 +29,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     boolean pauseState;
 
 
-
-    public String CurrentLeveltoString() {
-        return "Game{" +
-                "currentLevel=" + currentLevel +
-                '}';
-    }
-
     int currentLevel = 0;
     // creating a My HashTable Dictionary
     // Hashtable<Integer, String> gameLevel = new Hashtable<String, String>();
@@ -187,17 +180,23 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             }
         }
 
-        if (tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0 && this.stopDrop == false) { //&& this.stopDrop == false
-            this.stopDrop = true;
-            removeFoodObjects();
+        if (tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0) { //&& this.stopDrop == false
+            if(this.stopDrop == false) {
+                this.stopDrop = true;
                 setLost(true);
-                //setTest(true);
-            }
 
-            if(isWon() == false && isLost() == true ) {
+                removeFoodObjects();
                 display.levelBoks(currentLevel, false);
                 display.dispose();
+
+                //setTest(true);
             }
+            }
+
+           /* if(isWon() == false && isLost() == true ) {
+                display.levelBoks(currentLevel, false);
+                display.dispose();
+            }*/
         }
 
 
@@ -317,6 +316,12 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             g.drawString("DU HAR TABT",tekstBoksX+50,tekstBoksY+70);
             //System.out.println("false ");
         }
+    }
+
+    public String CurrentLeveltoString() {
+        return "Game{" +
+                "currentLevel=" + currentLevel +
+                '}';
     }
 
     /*
