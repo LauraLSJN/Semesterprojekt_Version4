@@ -13,9 +13,6 @@ public class Position {
         this.y = y;
         this.maxX = size.getDisplayWidth();
         this.maxY = size.getDisplayHeight();
-
-        //this.maxX = 700; //Width på display
-        //this.maxY = 500; //Height på display
         this.minX = 0;
         this.minY = 0;
 
@@ -30,17 +27,15 @@ public class Position {
     }
 
     public void setX(int x) {
-        if (x>= minX && x<=maxX-size.getPlayerObjectWidth()){ //-gameObject size, således at firkanten ikke ryger ud fra display
+        if (x>= minX && x<=maxX-size.getPlayerObjectWidth()){ //-gameObject width, således at firkanten ikke ryger ud fra display
         this.x = x;
         }else{
             System.out.println("Ude for rammen"); //Kontrol til terminal
-            System.out.println("X VÆRDI: " + this.x);
+            System.out.println("X VÆRDI: " + this.x); //Kontrol til terminal
         }
     }
-
     public void setY(int y) {
         this.y = y;
 
     }
-
 }

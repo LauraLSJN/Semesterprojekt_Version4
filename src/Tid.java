@@ -4,16 +4,11 @@ import java.awt.image.BufferedImage;
 import java.text.AttributedString;
 import java.text.DecimalFormat;
 
-
 public class Tid {
-
     Position position;
-
     int minSecond;
     int second=10;
     int minute;
-
-
     String ddSecond;
     String ddMinute;
     String ddMinSec;
@@ -23,30 +18,19 @@ public class Tid {
     int width = 100;
     int height = 50;
 
-
-
     //TEKST
     Font font = new Font("Monospaced", Font.BOLD, fontSize);
     String textInImage;
     AttributedString attributedText;
     Size size;
 
-
-
-
     public Tid() {
         size = new Size();
         position = new Position(size.getDisplayWidth() - width, 0);
         this.textInImage = "00:00:00";
-
-       // this.minSecond = 0;
-        //this.second = 0;
-        //this.minute = 0;
     }
 
     public void update() {
-
-
         if (minSecond == 0 && minute == 0 && second == 0) {
             minSecond = 0;
             minute = 0;
@@ -63,15 +47,18 @@ public class Tid {
                 minute--;
             }
         }
-
         ddSecond = ddFormat.format(second);
         ddMinute = ddFormat.format(minute);
         ddMinSec = ddFormat.format(minSecond);
-
         this.textInImage = (ddMinute + ":" + ddSecond + ":" + ddMinSec);
 
     }
 
+    public void stopTid() {
+        this.minute = 0;
+        this.second = 0;
+        this.minSecond = 0;
+    }
 
     public Image getSprite() {
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
@@ -79,7 +66,6 @@ public class Tid {
         graphics.setColor(Color.PINK);
         graphics.fillRect(0, 0, width, height);
         setText(graphics);
-        graphics.dispose();
         return image;
     }
 
@@ -89,15 +75,6 @@ public class Tid {
         attributedText.addAttribute(TextAttribute.FOREGROUND, Color.WHITE); //Sættes til foreground + farve = hvid
         graphics.drawString(attributedText.getIterator(), xText, (height / 2) + 5); //Placeres i billede -> X og y kordinat er i henhold til image
     }
-
-    public void stopTid() {
-        this.minute = 0;
-        this.second = 0;
-        this.minSecond = 0;
-    }
-
-
-
 
     public void setMinSecond(int minSecond) {
         this.minSecond = minSecond;
@@ -122,6 +99,5 @@ public class Tid {
     public int getMinute() {
         return minute;
     }
-
 
 }

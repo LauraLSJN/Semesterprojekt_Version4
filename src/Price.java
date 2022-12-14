@@ -1,7 +1,6 @@
 public class Price {
     private int valuePrice;
     private int minPrice;
-
     private int maxPrice;
 
     public Price(){

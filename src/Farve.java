@@ -20,8 +20,5 @@ public class Farve {
         float blue  = (float) Math.random();
 
         return new Color( red, green, blue );
-
     }
-
-
 }

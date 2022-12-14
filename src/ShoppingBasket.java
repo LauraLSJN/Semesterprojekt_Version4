@@ -2,9 +2,6 @@ import java.awt.*;
 import java.awt.font.TextAttribute;
 import java.awt.image.BufferedImage;
 import java.text.AttributedString;
-import java.util.Timer;
-import java.util.TimerTask;
-
 
 public class ShoppingBasket {
     Position position;
@@ -14,7 +11,7 @@ public class ShoppingBasket {
     int collectedFood;
     int nowCollectedFood;
 
-
+    //Grafiske variabler
     private int fontSize = 15;
     private int shoppingBasketWidth = 125;
     private int shoppingBasketHeight = 105; //I alt er tekst 95 pixel. For at få 5 pixel i top og bund sættes height til 105
@@ -58,7 +55,7 @@ public class ShoppingBasket {
         return image;
     }
 
-    //Price i firkanten
+    //Tekst i firkant
     //https://www.baeldung.com/java-add-text-to-image
     public void setText(Graphics2D graphics, String text, int x, int y) {
         attributedText = new AttributedString(text);
@@ -66,6 +63,4 @@ public class ShoppingBasket {
         attributedText.addAttribute(TextAttribute.FOREGROUND, Color.WHITE); //Sættes til foreground + farve = hvid
         graphics.drawString(attributedText.getIterator(), x, y); //Placeres i billede -> X og y kordinat er i henhold til image
     }
-
-
 }

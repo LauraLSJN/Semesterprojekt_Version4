@@ -36,6 +36,4 @@ public class PlayerObject extends GameObject {
         graphics.drawImage(imgShoppingkurv,0,0,size.getPlayerObjectWidth(), size.getPlayerObjectHeight(),null);
         return image;
     }
-
-
 }

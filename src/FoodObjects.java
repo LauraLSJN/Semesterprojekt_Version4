@@ -76,6 +76,4 @@ public class FoodObjects extends GameObject { //globale variabler som vi bruger
                 "price=" + price +
                 '}';
     }
-
-
 }

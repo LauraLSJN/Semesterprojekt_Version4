@@ -35,8 +35,6 @@ public class GameLoop implements Runnable {
             }
             printStats();
         }
-
-
     }
 
     private void printStats() {
