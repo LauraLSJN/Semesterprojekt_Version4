@@ -11,6 +11,7 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class StartGameWindow {
 
+
     //Laver Start knap
     public void StartBoks() {
         JFrame window = new JFrame();//tegner vinduet
@@ -25,6 +26,9 @@ public class StartGameWindow {
         startBtn.setFont(new Font("Monospaced", Font.BOLD, 25));//Fonten paa teksten
         startBtn.setForeground(Color.PINK);//Farve på tekst
         startBtn.setPreferredSize(new Dimension(700, 500));//Knappens størrelse -> Sættes til samme som windows dimension
+        startBtn.setForeground(Color.PINK);//Farve paa tekst
+        startBtn.setPreferredSize(new Dimension(700, 500));//Storrelsen paa knappen
+        //startBtn.setBackground(Color.green);//Farve paa knappen
         startBtn.addActionListener(e -> gamePanel.start());//Actionlistener naar knappen trykkes skal spillet starte --> void start
 
         window.add(startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
