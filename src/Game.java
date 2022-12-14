@@ -103,15 +103,9 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             shoppingBaskets.add(new ShoppingBasket(100));
             gameObject.add(new PlayerObject(new Player(input), 4));
             addFoodObjects();
-            addFoodObjects();
-            addFoodObjects();
         } else if(currentLevel == 5) {
             shoppingBaskets.add(new ShoppingBasket(150));
             gameObject.add(new PlayerObject(new Player(input), 5));
-            addFoodObjects();
-            addFoodObjects();
-            addFoodObjects();
-            addFoodObjects();
             addFoodObjects();
         }else {
             System.out.println("addLevels: else ");
@@ -155,6 +149,8 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             gameObject.add(new FoodObjects(4, true, true));
         } else if (currentLevel == 5) {
             gameObject.add(new FoodObjects(5, true, true));
+          //  gameObject.add(new FoodObjects(3, true, true));
+            gameObject.add(new FoodObjects(1, true, true));
         }else {
             System.out.println("addFoodObject: else ");
          //   System.exit(0);
