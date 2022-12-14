@@ -35,30 +35,61 @@ public class Display extends JFrame {
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
 
       if (won) {
-          window.setTitle("MyFoodSolver");//titel pa vinduet
-          window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
-          GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
-          window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
 
-          JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
-          //jlabel.setHorizontalAlignment(SwingConstants.CENTER);
-          //jlabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-          jlabel.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
-          gamePanel.add(jlabel);
-          jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
+          if(level <4) {
 
-          JButton startBtn = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
-          startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
-          startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-          startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
-          startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
-          gamePanel.add(startBtn, BorderLayout.CENTER); //tegner vores knap med alt det forrige indhold som str, farve og font
+              window.setTitle("MyFoodSolver");//titel pa vinduet
+              window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
+              GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+              window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
 
-          window.pack();//tegner alt indhold
-          window.setLocationRelativeTo(null);//Placerer vinduet
-          window.setVisible(true);//gor vinduet synlig
+              JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
 
+              //jlabel.setHorizontalAlignment(SwingConstants.CENTER);
+              //jlabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+              jlabel.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
+              gamePanel.add(jlabel);
+              jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
+
+              JButton startBtn = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
+              startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
+              startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+              startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
+              startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
+              gamePanel.add(startBtn, BorderLayout.CENTER); //tegner vores knap med alt det forrige indhold som str, farve og font
+
+              window.pack();//tegner alt indhold
+              window.setLocationRelativeTo(null);//Placerer vinduet
+              window.setVisible(true);//gor vinduet synlig
+          }else if (level == 4){
+
+              window.setTitle("MyFoodSolver");//titel pa vinduet
+              window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
+              GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+              window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
+
+              JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet HELE SPILLET <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
+
+              //jlabel.setHorizontalAlignment(SwingConstants.CENTER);
+              //jlabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+              jlabel.setFont(new Font("Comic Sans MS", Font.BOLD, 32));
+              gamePanel.add(jlabel);
+              jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
+
+              JButton startBtn = new JButton("Klik her for at starte spillet forfra!");//Det som skla staa i vores startknap
+              startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
+              startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+
+              startBtn.addActionListener(e -> gamePanel.level1(0));//Actionlistener naar knappen trykkes skal spillet starte --> void start
+              startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
+              gamePanel.add(startBtn, BorderLayout.CENTER); //tegner vores knap med alt det forrige indhold som str, farve og font
+
+              window.pack();//tegner alt indhold
+              window.setLocationRelativeTo(null);//Placerer vinduet
+              window.setVisible(true);//gor vinduet synlig
+          }
       } else if (won == false ){
           System.out.println("won == false ");
 
