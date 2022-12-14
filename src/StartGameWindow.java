@@ -20,7 +20,7 @@ public class StartGameWindow {
         GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
         window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
         JButton startBtn = new JButton("Klik her for at starte MyFoodSolver!!");//Det som skla staa i vores startknap
-        startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
+        startBtn.setFont(new Font("Monospaced", Font.BOLD, 25));//Fonten paa teksten
         startBtn.setForeground(Color.GREEN);//Farve paa tekst
         startBtn.setPreferredSize(new Dimension(700, 500));//Storrelsen paa knappen
         // startBtn.setBackground(Color.green);//Farve paa knappen

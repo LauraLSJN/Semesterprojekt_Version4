@@ -9,11 +9,12 @@ public class Farve {
 
     public Farve() {
 
-        this.randomColor = setRandomColor();
+        this.randomColor = setRandomColor(); //laver random color fra metoden setRandomColor der tager tilfælde tal indenfor farveskalen RBG
         this.minusFarve = Color.red;
         this.plusFarve = Color.green;
     }
 
+    //Funktion der generer random farver
     public Color setRandomColor() {
         float red   = (float) Math.random();
         float green = (float) Math.random();

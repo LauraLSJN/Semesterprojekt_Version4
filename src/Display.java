@@ -5,15 +5,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.image.BufferStrategy;
 
 public class Display extends JFrame {
-
     private Canvas canvas;
-
-    Image img = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingMarket.jpg"); //Erstat stigen, men din egen sti
-    //Anna sti: "/Users/annab/Desktop/shoppingMarket.jpg"
-    //Chris sti:/Users/christinewulffeld/Desktop/shoppingMarket.jpg
-    //Caro sti: "C:\Users\Carov\Desktop\shoppingMarket.jpg"
-    //Laura sti: /Users/laura/Desktop/shoppingMarket.jpg
-
+    Image img = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingMarket.jpg"); //Billede er i Ressourcer Mappen
 
     public Display(int width, int height, Input input){
 
@@ -30,16 +23,16 @@ public class Display extends JFrame {
         setVisible(true);
     }
 
+
     public void levelBoks(int level, boolean won ){
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
         window.setTitle("MyFoodSolver");//titel pa vinduet
-        window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
-        GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
-        window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
+        window.setPreferredSize(new Dimension(700, 500));//window størrelse
+        GamePanel gamePanel = new GamePanel(window);
+        window.add(gamePanel);//Tilføjer det gamePanel vi ikke bruger
 
       if (won) {
-
           if(level <6) {
               JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
 
@@ -67,7 +60,7 @@ public class Display extends JFrame {
               gamePanel.add(jlabel);
               jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
 
-              JButton startBtn = new JButton("Klik her for at starte spillet forfra!");//Det som skla staa i vores startknap
+              JButton startBtn = new JButton("Klik her for at starte spillet forfra!");//Tekst i knap
               startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
               startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 

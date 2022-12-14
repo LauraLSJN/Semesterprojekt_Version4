@@ -304,14 +304,15 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         int tekstBoksWidth = 125; // 500
         int tekstBoksHeight = 50; //100
         int tekstBoksX = 0;
-        int tekstBoksY = 105+5;
-        Font font = new Font("Monospaced", Font.PLAIN, 15);
+        int tekstBoksY = 110;
+        int fontSize = 15;
+        Font font = new Font("Monospaced", Font.PLAIN, fontSize);
         g.setFont(font);
         g.setColor(Color.PINK);
         g.fillRect(tekstBoksX,tekstBoksY,tekstBoksWidth,tekstBoksHeight);
         g.setColor(Color.WHITE);
         g.drawString("Level: ",tekstBoksX+5,tekstBoksY+20);
-        g.drawString(String.valueOf(currentLevel),tekstBoksX+10+15,tekstBoksY+40);
+        g.drawString(String.valueOf(currentLevel),tekstBoksX+5+fontSize,tekstBoksY+40);
 
     }
 

@@ -11,19 +11,23 @@ public class ShoppingBasket {
     int maxValue;
     String maxValueString;
     AttributedString attributedText;
-    int fontSize = 15;
-
-    Font font = new Font("Monospaced", Font.PLAIN, fontSize);
     int collectedFood;
-    // int oldCollectedFood;
     int nowCollectedFood;
+
+
+    private int fontSize = 15;
+    private int shoppingBasketWidth = 125;
+    private int shoppingBasketHeight = 105; //I alt er tekst 95 pixel. For at få 5 pixel i top og bund sættes height til 105
+    private int textX = 5;
+    private int textY = 25;
+    private int configuration = 5;
+    Font font = new Font("Monospaced", Font.PLAIN, fontSize);
 
     public ShoppingBasket(int shoppingbasket) {
         position = new Position(0, 0);
-        this.maxValue = shoppingbasket;
-        maxValueString = String.valueOf(maxValue);
-        this.collectedFood = 0;
-        //    this.oldCollectedFood = 0;
+        this.maxValue = shoppingbasket; //sætter den efterspurgte værdi 5
+        maxValueString = String.valueOf(maxValue); //Taler int om til String
+        this.collectedFood = 0; //Indsamlet point
     }
 
     public void setCollectedFood(int collectedFood) {
@@ -40,21 +44,17 @@ public class ShoppingBasket {
     }
 
     public Image getSprite() {
-        int shoppingBasketWidth = 125;
-        int shoppingBasketHeight = 105; //Text 95 - height 105, betyder at der er 5 pixel i top og bund
-        int textX = 5;
-        int textY = 25;
-        int configuration = 5;
-        BufferedImage image = new BufferedImage(shoppingBasketWidth, shoppingBasketHeight, BufferedImage.TYPE_INT_RGB);
-        Graphics2D graphics = image.createGraphics();
-        graphics.setColor(Color.PINK);
-        graphics.fillRect(0, 0, shoppingBasketWidth, shoppingBasketWidth);
-        setText(graphics, "Shoppingkurv:", textX, textY);
-        setText(graphics, maxValueString, textX + fontSize, textY + fontSize+configuration);
+        BufferedImage image = new BufferedImage(shoppingBasketWidth, shoppingBasketHeight, BufferedImage.TYPE_INT_RGB); //Laver Buffered billede
+        Graphics2D graphics = image.createGraphics(); //Instans af Graphics2D klasse så vi kan bruge klassen
+        graphics.setColor(Color.PINK); //Farve på billedet
+        graphics.fillRect(0, 0, shoppingBasketWidth, shoppingBasketWidth); //fylder rect - Placeres ovenpå Image
 
-        setText(graphics, "Indsamlet:", textX, textY*2+fontSize+configuration); //25+25+15+5
-        setText(graphics, String.valueOf(nowCollectedFood), textX + fontSize, textY*3+fontSize+configuration); //25+25+25+15
-        graphics.dispose();
+        //Tegner tekst i billede
+        setText(graphics, "Shoppingkurv:", textX, textY);
+        setText(graphics, "Indsamlet:", textX, textY*2+fontSize+configuration);
+        setText(graphics, maxValueString, textX + fontSize, textY + fontSize+configuration); //Tegner maxValue
+        setText(graphics, String.valueOf(nowCollectedFood), textX + fontSize, textY*3+fontSize+configuration); //Tegner ShoppingBasket nowCollected værdi
+
         return image;
     }
 
