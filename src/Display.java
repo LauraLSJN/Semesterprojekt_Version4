@@ -106,7 +106,6 @@ public class Display extends JFrame {
             gamePanel.add(jlabel);
             jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
 
-
             JButton startBtn = new JButton("Klik her for at starte level " + level + " IGEN!");//Det som skla staa i vores startknap
             startBtn.setFont(new Font("Monospaced", Font.BOLD, 32));//Fonten paa teksten
             startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
