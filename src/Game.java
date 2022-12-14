@@ -6,8 +6,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Random;
 import java.awt.font.TextAttribute;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 
 public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vores spil. Det vigtigste her er de to lister
@@ -78,28 +77,35 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         //Anvendes til kontrol
         System.out.println("GameObject Størrelse: " + gameObject.size());
         System.out.println(getGameObject());
+        display.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
     }
 
 
     public void addLevels() {
+
         if (currentLevel == 0) {
             shoppingBaskets.add(new ShoppingBasket(5));
             gameObject.add(new PlayerObject(new Player(input), 1));
             addFoodObjects();
 
+
+
+
         } else if (currentLevel == 1) {
-            shoppingBaskets.add(new ShoppingBasket(30));
+            shoppingBaskets.add(new ShoppingBasket(5));
             gameObject.add(new PlayerObject(new Player(input), 3));
             addFoodObjects();
 
+
         } else if (currentLevel == 2) {
-            shoppingBaskets.add(new ShoppingBasket(50));
+            shoppingBaskets.add(new ShoppingBasket(5));
             gameObject.add(new PlayerObject(new Player(input), 5));
             System.out.println(getGameObject());
             addFoodObjects();
 
         } else {
+           // System.exit(0);
             System.out.println("addLevels: else ");
         }
     }
@@ -135,9 +141,10 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         } else if (currentLevel == 1) {
             gameObject.add(new FoodObjects(2, false, false));
         } else if (currentLevel == 2) {
-            gameObject.add(new FoodObjects(3, true, true));
+            gameObject.add(new FoodObjects(3, false, true));
         } else {
             System.out.println("addFoodObject: else ");
+         //   System.exit(0);
         }
 
 
@@ -177,6 +184,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
                 System.out.println("currentLevel; " + currentLevel);
                 display.levelBoks(currentLevel, true);
                 display.dispose();
+
             }
         }
 

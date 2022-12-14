@@ -1,13 +1,17 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
 import java.awt.image.BufferStrategy;
 
 public class Display extends JFrame {
-    MyFrame myFrame;
+
 
 
 
     private Canvas canvas;
+    //JFrame windowW = new JFrame();//tegner vinduet
+
     Image img = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingMarket.jpg"); //Erstat stigen, men din egen sti
     //Anna sti: "/Users/annab/Desktop/shoppingMarket.jpg"
     //Chris sti:/Users/christinewulffeld/Desktop/shoppingMarket.jpg
@@ -16,8 +20,24 @@ public class Display extends JFrame {
 
 
     public Display(int width, int height, Input input){
-        setTitle("MyFoodSolver");
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+
+
+        //windowW.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //windowW.setTitle("MyFoodSolver");//titel pa vinduet
+        //windowW.setResizable(false);
+        //windowW.setPreferredSize(new Dimension(width, height));
+        //windowW.setFocusable(false);
+        //windowW.add(windowW);
+        //GamePanel gamePanel = new GamePanel(windowW);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+        //windowW.add(gamePanel);
+       // addKeyListener(input);
+       // pack();
+        //windowW.createBufferStrategy(3);
+       // setLocationRelativeTo(null);
+       // setVisible(true);
+       // setTitle("MyFoodSolver");
+        //setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setTitle("MyFoodSolver");//titel pa vinduet
         setResizable(false);
         canvas = new Canvas();
         canvas.setPreferredSize(new Dimension(width, height));
@@ -56,10 +76,11 @@ public class Display extends JFrame {
     }*/
 
     public void levelBoks(int level, boolean won ){
+        JFrame window = new JFrame();
+        window.setDefaultCloseOperation(EXIT_ON_CLOSE);
         // JFrame window = new JFrame();//tegner vinduet
       if (won) {
-
-          JFrame window = new JFrame();
+         // JFrame window = new JFrame();
           window.setTitle("MyFoodSolver");//titel pa vinduet
           window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
           GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
@@ -109,9 +130,11 @@ public class Display extends JFrame {
           window.setLocationRelativeTo(null);//Placerer vinduet
           window.setVisible(true);//gor vinduet synlig
 
+
+
       } else if (won == false ){
           System.out.println("won == false ");
-          JFrame window = new JFrame();
+         // JFrame window = new JFrame();
           window.setTitle("MyFoodSolver");//titel pa vinduet
           window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
           GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
@@ -127,7 +150,6 @@ public class Display extends JFrame {
           startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
           startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-
           startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
           startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
           gamePanel.add(startBtn, BorderLayout.CENTER);
@@ -141,7 +163,10 @@ public class Display extends JFrame {
     }
 
     public void render(Game game){
-        BufferStrategy bufferStartegy = canvas.getBufferStrategy();
+
+
+       BufferStrategy bufferStartegy = canvas.getBufferStrategy();
+       // BufferStrategy bufferStartegy = windowW.getBufferStrategy();
         Graphics graphics = bufferStartegy.getDrawGraphics();
         graphics.drawImage(img, 0, 0,700,500,null); //"Tegner" baggrunden som billedet
         //graphics.fillRect(0, 0, canvas.getWidth(),canvas.getHeight()); //Kan anvendes hvis billede ikke virker

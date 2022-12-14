@@ -10,8 +10,8 @@ public class Tid {
     Position position;
 
     int minSecond;
-    int second=15;
-    int minute;
+    int second;
+    int minute=2;
 
 
     String ddSecond;
