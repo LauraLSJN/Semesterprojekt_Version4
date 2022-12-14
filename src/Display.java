@@ -10,7 +10,7 @@ public class Display extends JFrame {
 
 
     private Canvas canvas;
-    //JFrame windowW = new JFrame();//tegner vinduet
+
 
     Image img = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingMarket.jpg"); //Erstat stigen, men din egen sti
     //Anna sti: "/Users/annab/Desktop/shoppingMarket.jpg"
@@ -21,22 +21,6 @@ public class Display extends JFrame {
 
     public Display(int width, int height, Input input){
 
-
-        //windowW.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        //windowW.setTitle("MyFoodSolver");//titel pa vinduet
-        //windowW.setResizable(false);
-        //windowW.setPreferredSize(new Dimension(width, height));
-        //windowW.setFocusable(false);
-        //windowW.add(windowW);
-        //GamePanel gamePanel = new GamePanel(windowW);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
-        //windowW.add(gamePanel);
-       // addKeyListener(input);
-       // pack();
-        //windowW.createBufferStrategy(3);
-       // setLocationRelativeTo(null);
-       // setVisible(true);
-       // setTitle("MyFoodSolver");
-        //setDefaultCloseOperation(EXIT_ON_CLOSE);
         setTitle("MyFoodSolver");//titel pa vinduet
         setResizable(false);
         canvas = new Canvas();
@@ -49,31 +33,6 @@ public class Display extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
-
-/*
-    public void levelBoks(int level){
-       // JFrame canvas = new JFrame();//tegner vinduet
-      //  canvas.setTitle("MyFoodSolver");//titel pa vinduet
-       // StartGameWindow.GamePanel gamePanel = new StartGameWindow.GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
-      //  window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
-       // StartGameWindow.GamePanel gamePanel = new StartGameWindow.GamePanel(canvas);
-
-        StartGameWindow.GamePanel = new StartGameWindow.GamePanel();
-
-        JButton startBtn = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
-        startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
-        // startBtn.setForeground(Color.GREEN);//Farve paa tekst
-        //startBtn.setPreferredSize(700, 80);//Storrelsen paa knappen
-        // startBtn.setBackground(Color.green);//Farve paa knappen
-        startBtn.addActionListener(e -> gamePanel.level1(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
-        //canvas.add(startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
-
-        //canvas.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
-        //canvas.pack();//tegner alt indhold
-       // canvas.setLocationRelativeTo(null);//Placerer vinduet
-        //canvas.setVisible(true);//gor vinduet synlig
-    }*/
 
     public void levelBoks(int level, boolean won ){
         JFrame window = new JFrame();

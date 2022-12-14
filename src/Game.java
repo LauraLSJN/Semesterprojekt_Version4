@@ -79,6 +79,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         System.out.println(getGameObject());
         display.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+
     }
 
 
