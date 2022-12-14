@@ -7,12 +7,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+
 public class StartGameWindow {
 
 
     //Laver Start knap
     public void StartBoks() {
         JFrame window = new JFrame();//tegner vinduet
+        window.setDefaultCloseOperation(EXIT_ON_CLOSE);
         window.setTitle("MyFoodSolver");//titel pa vinduet
         GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
         window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
