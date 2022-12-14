@@ -7,8 +7,8 @@ import java.text.DecimalFormat;
 public class Tid {
     Position position;
     int minSecond;
-    int second=10;
-    int minute;
+    int second;
+    int minute= 2;
     String ddSecond;
     String ddMinute;
     String ddMinSec;
