@@ -76,7 +76,7 @@ public class Tid {
     public Image getSprite() {
         BufferedImage image = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics = image.createGraphics();
-        graphics.setColor(Color.BLACK);
+        graphics.setColor(Color.PINK);
         graphics.fillRect(0, 0, width, height);
         setText(graphics);
         graphics.dispose();

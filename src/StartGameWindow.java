@@ -23,9 +23,6 @@ public class StartGameWindow {
         // startBtn.setBackground(Color.green);//Farve paa knappen
         startBtn.addActionListener(e -> gamePanel.start());//Actionlistener naar knappen trykkes skal spillet starte --> void start
 
-
-
-
         window.add(startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
         window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
         window.pack();//tegner alt indhold

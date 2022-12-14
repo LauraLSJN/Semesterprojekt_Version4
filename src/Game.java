@@ -2,12 +2,9 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.text.AttributedString;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Random;
 import java.awt.font.TextAttribute;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 
 public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vores spil. Det vigtigste her er de to lister
@@ -102,6 +99,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         }else {
             System.out.println("addLevels: else ");
         }
+
     }
 
 
@@ -154,9 +152,10 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         }
     }
 
-    public void removeFoodObjects(){
-            for (int i = 1; i < gameObject.size(); i++) {
+    public void removeGameObjects(){
+            for (int i = 0; i < gameObject.size(); i++) {
                 gameObject.remove(i); //Fjerne dem der ikke er ramt fra ArrayListe
+                //display.dispose();
                 //System.out.println(getGameObject());
                 //System.out.println("FJERNER: " + getGameObject().get(i));
                // level.setNextLevel(1);
@@ -169,28 +168,30 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         //checkLevel();
         if (shoppingBaskets.get(0).nowCollectedFood == shoppingBaskets.get(0).maxValue) {
             //addFoodObjects(); //Tilføjer nyt objekt til arrayliste hvis shoppingBasket ikke er lig maks
-            removeFoodObjects();
+            removeGameObjects();
             if (this.stopDrop == false) {
                 setWon(true);
                 System.out.println(this.won);
                 currentLevel++;
                 System.out.println("currentLevel; " + currentLevel);
                 display.levelBoks(currentLevel, true);
+                System.out.println("Shopping Basket:");
                 display.dispose();
+
+
             }
         }
 
-        if (tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0) { //&& this.stopDrop == false
-            if(this.stopDrop == false) {
-                this.stopDrop = true;
-                setLost(true);
+        if (tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0 && this.stopDrop == false) { //&& this.stopDrop == false
+            this.stopDrop = true;
+            removeGameObjects();
+            setLost(true);
 
-                removeFoodObjects();
-                display.levelBoks(currentLevel, false);
+            if(isWon() == false && isLost() == true){
+                display.levelBoks(currentLevel,false);
                 display.dispose();
-
-                //setTest(true);
             }
+
             }
 
            /* if(isWon() == false && isLost() == true ) {
@@ -245,13 +246,8 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         detection();
         checkStop();
         dropFoodObjects();
-        //tid.get(0).update();
-
-
         tid.forEach(tid -> tid.update()); //Find retur værdi
 
-
-        //level.detectLevel();
     }
 
     public void render() {
@@ -270,16 +266,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         return tid;
     }
 
-    public Image getSprite() {
-        BufferedImage image = new BufferedImage(100, 50, BufferedImage.TYPE_INT_RGB);
-        Graphics2D graphics = image.createGraphics();
-        graphics.setColor(Color.BLACK);
-        graphics.fillRect(300, 300, 100, 100);
-        setText(graphics, "TEST", 0, 0);
-        graphics.dispose();
-        return image;
-    }
-
     //Price i firkanten
     //https://www.baeldung.com/java-add-text-to-image
     public void setText(Graphics2D graphics, String text, int x, int y) {
@@ -293,59 +279,19 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         //Center -> GetAscent og getDescent -> Som tage
         //String tekst -> hvor vi kan bruge ovenstående, som tager størrelsen af string ift. font -> Derefter kan vi centrerer det
         //https://www.tabnine.com/code/java/methods/java.awt.Graphics/setFont
+        int tekstBoksWidth = 125; // 500
+        int tekstBoksHeight = 50; //100
+        int tekstBoksX = 0;
+        int tekstBoksY = 105+5;
+        Font font = new Font("Monospaced", Font.PLAIN, 15);
+        g.setFont(font);
+        g.setColor(Color.PINK);
+        g.fillRect(tekstBoksX,tekstBoksY,tekstBoksWidth,tekstBoksHeight);
+        g.setColor(Color.WHITE);
+        g.drawString("Level: ",tekstBoksX+5,tekstBoksY+20);
+        g.drawString(String.valueOf(currentLevel),tekstBoksX+10+15,tekstBoksY+40);
 
-        int tekstBoksWidth = size.getDisplayWidth()-200; // 500
-        int tekstBoksHeight = size.getDisplayHeight()-400; //100
-        int tekstBoksX = 100;
-        int tekstBoksY = (size.getDisplayHeight()/2)- tekstBoksHeight-50;
-        Font font = new Font("Serif", Font.BOLD, 50);
-
-        if (isWon()){
-            g.setFont(font);
-            g.setColor(Color.LIGHT_GRAY);
-            g.fillRect(tekstBoksX,tekstBoksY,tekstBoksWidth,tekstBoksHeight);
-            g.setColor(Color.GREEN);
-            g.drawString("DU HAR VUNDET",tekstBoksX+50,tekstBoksY+70);
-
-        }
-        else if (isLost()){
-            g.setFont(font);
-            g.setColor(Color.LIGHT_GRAY);
-            g.fillRect(tekstBoksX,tekstBoksY,tekstBoksWidth,tekstBoksHeight);
-            g.setColor(Color.RED);
-            g.drawString("DU HAR TABT",tekstBoksX+50,tekstBoksY+70);
-            //System.out.println("false ");
-        }
     }
-
-    public String CurrentLeveltoString() {
-        return "Game{" +
-                "currentLevel=" + currentLevel +
-                '}';
-    }
-
-    /*
-
-    public void cLevel(){
-        this.currentLevel++;
-        setWon(false);
-    }
-
-    public void checkLevel(){
-        if(won == true){
-            //currentLevel++;
-            //System.out.println("CurrentLevel: " + currentLevel);
-            setWon(false);
-        }
-
-
-        if(lost == true){
-
-            this.currentLevel = currentLevel;
-
-        }
-    }
-    */
 
     public boolean isWon() {
         return won;

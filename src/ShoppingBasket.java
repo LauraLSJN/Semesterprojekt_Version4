@@ -11,14 +11,9 @@ public class ShoppingBasket {
     int maxValue;
     String maxValueString;
     AttributedString attributedText;
-
-    int rectx = 10;
-    int recty = 10;
-    int rectWidth = 100;
-    int rectHeight = 100;
     int fontSize = 15;
 
-    Font font = new Font("Monospaced", Font.BOLD, fontSize);
+    Font font = new Font("Monospaced", Font.PLAIN, fontSize);
     int collectedFood;
     // int oldCollectedFood;
     int nowCollectedFood;
@@ -45,12 +40,20 @@ public class ShoppingBasket {
     }
 
     public Image getSprite() {
-        BufferedImage image = new BufferedImage(100, 50, BufferedImage.TYPE_INT_RGB);
+        int shoppingBasketWidth = 125;
+        int shoppingBasketHeight = 105; //Text 95 - height 105, betyder at der er 5 pixel i top og bund
+        int textX = 5;
+        int textY = 25;
+        int configuration = 5;
+        BufferedImage image = new BufferedImage(shoppingBasketWidth, shoppingBasketHeight, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics = image.createGraphics();
-        graphics.setColor(Color.BLACK);
-        graphics.fillRect(rectx, recty, rectWidth, rectHeight);
-        setText(graphics, maxValueString, rectx + fontSize, recty + fontSize);
-        setText(graphics, String.valueOf(nowCollectedFood), rectx + fontSize, recty + fontSize + 15);
+        graphics.setColor(Color.PINK);
+        graphics.fillRect(0, 0, shoppingBasketWidth, shoppingBasketWidth);
+        setText(graphics, "Shoppingkurv:", textX, textY);
+        setText(graphics, maxValueString, textX + fontSize, textY + fontSize+configuration);
+
+        setText(graphics, "Indsamlet:", textX, textY*2+fontSize+configuration); //25+25+15+5
+        setText(graphics, String.valueOf(nowCollectedFood), textX + fontSize, textY*3+fontSize+configuration); //25+25+25+15
         graphics.dispose();
         return image;
     }

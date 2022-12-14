@@ -34,6 +34,7 @@ public class Position {
         this.x = x;
         }else{
             System.out.println("Ude for rammen"); //Kontrol til terminal
+            System.out.println("X VÆRDI: " + this.x);
         }
     }
 
