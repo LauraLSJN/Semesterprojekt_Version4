@@ -1,8 +1,6 @@
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.text.AttributedString;
 import java.util.ArrayList;
-import java.util.Hashtable;
 import java.util.List;
 import java.util.Random;
 import java.awt.font.TextAttribute;
@@ -166,7 +164,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         }
     }
 
-    public void removeFoodObjects() {
+    public void removeGameObjects() {
         for (int i = 0; i < gameObject.size(); i++) {
             gameObject.remove(i); //Fjerne dem der ikke er ramt fra ArrayListe
             //System.out.println(getGameObject());
@@ -195,7 +193,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
         if (tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0 && this.stopDrop == false) { //&& this.stopDrop == false
             this.stopDrop = true;
-            removeFoodObjects();
+            removeGameObjects();
                 setLost(true);
 
             if(isWon() == false && isLost() == true ) {
