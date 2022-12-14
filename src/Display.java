@@ -159,7 +159,7 @@ public class Display extends JFrame {
         //Anvender Lambda Expression
        // levelBoks(game.currentLevel);
 
-        drawCurrentLevel(graphics,game.toString());
+        drawCurrentLevel(graphics,game.CurrentLeveltoString());
         game.tekstBoks(graphics);
 
             game.getGameObject().forEach(gameObject -> graphics.drawImage( //gameobject vi har foodobjekter og player i

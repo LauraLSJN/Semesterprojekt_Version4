@@ -29,6 +29,13 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     boolean pauseState;
 
 
+
+    public String CurrentLeveltoString() {
+        return "Game{" +
+                "currentLevel=" + currentLevel +
+                '}';
+    }
+
     int currentLevel = 0;
     // creating a My HashTable Dictionary
     // Hashtable<Integer, String> gameLevel = new Hashtable<String, String>();
@@ -192,7 +199,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
                 display.dispose();
             }
         }
-    }
+
 
     //Metode til detection af hvorvidt firkanterne på displayet rammer hinanden
     public void detection() {
