@@ -31,7 +31,7 @@ public class FoodObjects extends GameObject { //globale variabler som vi bruger
     //Funktion til at tjekke hvorvidt variablen price skal være random eller ej
     public void isRandomPrice( boolean randomPrice){
         if (randomPrice){
-            price.setValuePrice(random.nextInt(price.getMinPrice(),price.getMaxPrice()));
+            price.setValuePrice(random.nextInt(price.getMinPrice(),price.getMaxPrice()+1));
         } else{
             price.setValuePrice(5);
         }
