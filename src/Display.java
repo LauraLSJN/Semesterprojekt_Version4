@@ -36,7 +36,7 @@ public class Display extends JFrame {
 
       if (won) {
 
-          if(level <4) {
+          if(level <5) {
 
 
               window.setTitle("MyFoodSolver");//titel pa vinduet
@@ -63,7 +63,7 @@ public class Display extends JFrame {
               window.pack();//tegner alt indhold
               window.setLocationRelativeTo(null);//Placerer vinduet
               window.setVisible(true);//gor vinduet synlig
-          }else if (level == 4){
+          }else if (level == 5){
 
               window.setTitle("MyFoodSolver");//titel pa vinduet
               window.setPreferredSize(new Dimension(700, 500));//vinduet str udenom knappen
@@ -82,7 +82,7 @@ public class Display extends JFrame {
               startBtn.setFont(new Font("Comic Sans MS", Font.BOLD, 32));//Fonten paa teksten
               startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-              startBtn.addActionListener(e -> gamePanel.level1(0));//Actionlistener naar knappen trykkes skal spillet starte --> void start
+              startBtn.addActionListener(e -> gamePanel.level1(1));//Actionlistener naar knappen trykkes skal spillet starte --> void start
               startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
               gamePanel.add(startBtn, BorderLayout.CENTER); //tegner vores knap med alt det forrige indhold som str, farve og font
 

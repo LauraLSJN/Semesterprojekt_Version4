@@ -19,7 +19,7 @@ public class GamePanel extends JPanel {
         timer.start();//Henter knappen som vi kan trykke paa saa vi bliver fort videre til naeste trin
         // Game game = new Game();//Henter game
 
-        new Thread(new GameLoop(new Game(0))).start();//starter spillet
+        new Thread(new GameLoop(new Game(1))).start();//starter spillet
 
     }
 
