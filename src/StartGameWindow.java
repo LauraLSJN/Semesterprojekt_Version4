@@ -21,7 +21,7 @@ public class StartGameWindow {
         window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
         JButton startBtn = new JButton("Klik her for at starte MyFoodSolver!!");//Det som skla staa i vores startknap
         startBtn.setFont(new Font("Monospaced", Font.BOLD, 25));//Fonten paa teksten
-        startBtn.setForeground(Color.GREEN);//Farve paa tekst
+        startBtn.setForeground(Color.PINK);//Farve paa tekst
         startBtn.setPreferredSize(new Dimension(700, 500));//Storrelsen paa knappen
         // startBtn.setBackground(Color.green);//Farve paa knappen
         startBtn.addActionListener(e -> gamePanel.start());//Actionlistener naar knappen trykkes skal spillet starte --> void start
