@@ -1,25 +1,23 @@
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-public class GamePanel extends JPanel {
-   //private JFrame window;
-    private static Timer timer;
+public class LaunchGameLevel extends JPanel {
+    private static Timer timer; //Java public klasse
 
     public LaunchGameLevel(JFrame window) {
         ActionListener Game = e -> {
-            window.dispose();
+            window.dispose(); //Når trykkes på knap, skal vinduet fjernes
         };
         timer = new Timer(200, Game);
     }
 
    public void start() {
-        timer.start();//Henter knappen som vi kan trykke paa saa vi bliver fort videre til naeste trin
-        new Thread(new GameLoop(new Game(1))).start();//starter spillet
-
+        timer.start();
+        new Thread(new GameLoop(new Game(1))).start();//starter spillet på level 1
     }
 
     public void startLevel(int currentlevel){
         timer.start();
-        new Thread(new GameLoop(new Game(currentlevel))).start();//starter spillet
+        new Thread(new GameLoop(new Game(currentlevel))).start();//starter et nyt game på level angivet i parameteren
     }
 }
