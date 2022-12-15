@@ -1,8 +1,8 @@
 
 import java.awt.Color;
 
-//Klasse til at generer random farve
-public class Farve {
+//Klasse til at genere farver
+public class ColorInGame {
     public Color randomColor;
     public Color negativeColor;
     public Color positiveColor;
@@ -13,7 +13,7 @@ public class Farve {
         this.positiveColor = Color.green;
     }
 
-    //Funktion der generer random farver
+    //Metode der generer random farver
     public Color setRandomColor() {
         float red   = (float) Math.random();
         float green = (float) Math.random();
