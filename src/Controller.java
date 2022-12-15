@@ -1,5 +1,5 @@
 public interface Controller {
-// metoder som vi vil have controller skal gøre for os
+    //Metoder som Player skal implementere
     boolean isRequestiongLeft();
     boolean isRequestiongRight();
 }

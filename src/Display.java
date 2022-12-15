@@ -3,8 +3,12 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 public class Display extends JFrame {
+
     private Canvas canvas;
-    Image img = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingMarket.jpg"); //Billede er i Ressourcer Mappen
+    public Image img = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingMarket.jpg"); //Billede er i Ressourcer Mappen
+    private int widthDisplay;
+    private int heightDisplay;
+    private String titleDisplay = "MyFoodSolver";
 
     public Display(int width, int height, Input input){
         this.widthDisplay = width;
@@ -34,12 +38,14 @@ public class Display extends JFrame {
                     null
 
             ));
+
             //Tegner shoppingBasket
             game.getShoppingBaskets().forEach(shoppingBasket -> graphics.drawImage(
                     shoppingBasket.getSprite(),
                     shoppingBasket.position.getX(),
                     shoppingBasket.position.getY(), null
             ));
+
             //Tegner tiden
             game.getTid().forEach(tid -> graphics.drawImage(
                     tid.getSprite(),

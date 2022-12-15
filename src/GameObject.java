@@ -17,6 +17,9 @@ public abstract class GameObject {
     public Position getPosition() {
         return position;
     }
-    public Price getPrice(){return price;}
+
+    public Price getPrice(){
+        return price;
+    }
 
 }

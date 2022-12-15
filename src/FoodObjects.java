@@ -27,15 +27,16 @@ public class FoodObjects extends GameObject {
         position.setY(oldPosition + speedFoodObject); //position.setY metode til at sætte den nye y-koordinat
     }
 
-    //Funktion til at tjekke hvorvidt variablen price skal være random eller ej
+    //Metode til at tjekke hvorvidt variablen price skal være random eller ej
     public void isRandomPrice(boolean randomPrice){
         if (randomPrice){
             price.setValuePrice(random.nextInt(price.getMinPrice(),price.getMaxPrice()+1)); //fra -10 til 10
         } else{
-            price.setValuePrice(5);
+            price.setValuePrice(5); //Sætter prisen til 5 altid
         }
     }
-    //Funktion at sætte farven i foodObjects
+
+    //Metode til at sætte farven i foodObjects
     public void setColor(boolean randomColor){
         if (randomColor){
             this.colorFoodObject = color.randomColor; //Random farve
