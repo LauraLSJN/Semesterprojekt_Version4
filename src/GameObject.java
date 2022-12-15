@@ -1,7 +1,8 @@
 import java.awt.*;
 
 public abstract class GameObject {
-    public Position position;
+   //Protected for at de kan tilgåes af subklasserne
+    protected Position position;
     protected Size size;
     protected ColorInGame color;
     protected Price price;

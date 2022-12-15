@@ -1,11 +1,7 @@
 //https://stackoverflow.com/questions/53699325/adding-start-stop-reset-button-to-simple-java-game
 import java.awt.*;
-import java.awt.event.ActionListener;
-import java.awt.image.BufferStrategy;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.Timer;
 
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
@@ -17,7 +13,7 @@ public class StartGameWindow {
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
         window.setPreferredSize(new Dimension(700, 500));
         window.setTitle("MyFoodSolver");//titel pa vinduet
-        GamePanel gamePanel = new GamePanel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
+        LaunchGameLevel gamePanel = new LaunchGameLevel(window);//tegner GamePanel noget som man kan bruge men det gor vi ikke, kan dog ikke slettes fordi saa virker actionlistener ikke
         window.add(gamePanel);//tilfojer det gamePanel vi ikke bruger
 
         //Knap

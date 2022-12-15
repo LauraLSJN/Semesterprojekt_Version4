@@ -64,7 +64,7 @@ public class Display extends JFrame {
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
         window.setTitle(titleDisplay);//titel pa window
         window.setPreferredSize(new Dimension(widthDisplay, heightDisplay));//window størrelse
-        GamePanel gamePanel = new GamePanel(window);
+        LaunchGameLevel gamePanel = new LaunchGameLevel(window);
         window.add(gamePanel); //Tilføjer gamePanel til window
         Font font = new Font("Monospaced", Font.BOLD, 25); //Font og størrelse på tekst
 

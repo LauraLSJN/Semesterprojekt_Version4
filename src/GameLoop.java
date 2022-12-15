@@ -5,7 +5,6 @@ public class GameLoop implements Runnable {
     private boolean running;
     private final double UPDATE_RATE = 1.0d / 60.0d;
     private long nextStatTime;
-    private int fps, ups;
 
     public GameLoop(Game game) {
         this.game = game;
@@ -26,7 +25,7 @@ public class GameLoop implements Runnable {
 
             if (accumulator >= UPDATE_RATE) {
                 while (accumulator >= UPDATE_RATE) {
-                    update();
+                    updateGameLoop();
                     accumulator -= UPDATE_RATE;
                 }
                 renderGameLoop();
@@ -37,20 +36,15 @@ public class GameLoop implements Runnable {
 
     private void printStats() {
         if (System.currentTimeMillis() > nextStatTime) {
-            //System.out.println(String.format("FPS: %d, UPS: %d", fps, ups));
-            fps = 0;
-            ups = 0;
             nextStatTime = System.currentTimeMillis() + 1000;
         }
     }
 
     private void renderGameLoop() {
         game.renderGame();
-        fps++;
     }
 
-    private void update() {
+    private void updateGameLoop() {
         game.updateGame();
-        ups++;
     }
 }

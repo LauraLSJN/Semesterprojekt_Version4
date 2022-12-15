@@ -5,12 +5,11 @@ public class GamePanel extends JPanel {
    //private JFrame window;
     private static Timer timer;
 
-    public GamePanel(JFrame window) {
-       // this.window = window;
+    public LaunchGameLevel(JFrame window) {
         ActionListener Game = e -> {
             window.dispose();
         };
-        timer = new Timer(200, Game);//VED IKKE HELT HVAD DER SKER HER FOR GAME ER BARE SAT IND UDEN TANKE MEN UDEN VIRKER KDOEN IKKE
+        timer = new Timer(200, Game);
     }
 
    public void start() {
