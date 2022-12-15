@@ -7,7 +7,6 @@ public class Display extends JFrame {
     Image img = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingMarket.jpg"); //Billede er i Ressourcer Mappen
 
     public Display(int width, int height, Input input){
-
         setTitle("MyFoodSolver");//titel pa vinduet
         setResizable(false);
         canvas = new Canvas();
