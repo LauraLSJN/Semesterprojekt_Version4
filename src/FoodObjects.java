@@ -4,28 +4,27 @@ import java.awt.image.BufferedImage;
 import java.text.AttributedString;
 import java.util.Random;
 
-public class FoodObjects extends GameObject { //globale variabler som vi bruger
-    Random random = new Random();
-    Font font = new Font("Monospaced", Font.BOLD, 15);
-    String textInImage;
-    AttributedString attributedText;
-    int speed;
-    Farve farve;
-    private Color colorBoks;
+public class FoodObjects extends GameObject {
+    //globale variabler som vi bruger
+    private Random random = new Random();
+    private Font font = new Font("Monospaced", Font.BOLD, 15);
+    private String textInFoodObject;
+    private AttributedString attributedText;
+    private int speedFoodObject;
+    private Color colorFoodObject;
 
     public FoodObjects(int speed, boolean randomPrice, boolean randomColor){
-        farve = new Farve();
-        position = new Position(random.nextInt(size.getDisplayWidth()- size.getFoodObjectWidth()),0 ); //-gameObject size, så de ikke placeres udenfor display
+        position = new Position(random.nextInt(size.getDisplayWidth()- size.getFoodObjectWidth()),0 ); //Placeres indenfor display -> display width-foodObjectWidth, så hele firkenten er indenfor display
         isRandomPrice(randomPrice);
-        textInImage = String.valueOf(getPrice().getValuePrice()); //Henter valuePrice
+        textInFoodObject = String.valueOf(getPrice().getValuePrice()); //Henter valuePrice
         setColor(randomColor);
-        this.speed = speed;
+        this.speedFoodObject = speed;
     }
 
     @Override
     public void update() {
-        int oldPos = position.getY(); //Position.getY metode til at hente y-koordinat
-        position.setY(oldPos+speed); //position.setY metode til at sætte den ny y-koordinat
+        int oldPosition = position.getY(); //Position.getY metode til at hente y-koordinat
+        position.setY(oldPosition + speedFoodObject); //position.setY metode til at sætte den nye y-koordinat
     }
 
     //Funktion til at tjekke hvorvidt variablen price skal være random eller ej
@@ -39,12 +38,12 @@ public class FoodObjects extends GameObject { //globale variabler som vi bruger
     //Funktion at sætte farven i foodObjects
     public void setColor(boolean randomColor){
         if (randomColor){
-            this.colorBoks = farve.randomColor;
+            this.colorFoodObject = color.randomColor; //Random farve
         }else {
-        if(getPrice().getValuePrice() >= 0){ //hvis prisen er lig eller mindre end 0
-            this.colorBoks = farve.plusFarve; //grøn farve
+        if(getPrice().getValuePrice() >= 0){ //hvis prisen er lig eller større end 0
+            this.colorFoodObject = color.positiveColor; //grøn farve
         } else{
-            this.colorBoks = farve.minusFarve; //rød farve
+            this.colorFoodObject = color.negativeColor; //rød farve
         }
         }
     }
@@ -53,19 +52,18 @@ public class FoodObjects extends GameObject { //globale variabler som vi bruger
     public Image getSprite() {
         BufferedImage image = new BufferedImage(size.getFoodObjectWidth(),size.getFoodObjectHeight(), BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics = image.createGraphics();
-        graphics.setColor(colorBoks);
+        graphics.setColor(colorFoodObject); //Sætter farven
         graphics.fillRect(0, 0, size.getFoodObjectWidth(), size.getFoodObjectHeight());
         setText(graphics);
         return image;
     }
 
     //Tekst i foodObjects (Grafisk)
-    //https://www.baeldung.com/java-add-text-to-image
     public void setText(Graphics2D graphics){
-        attributedText = new AttributedString(textInImage);
+        attributedText = new AttributedString(textInFoodObject);
         attributedText.addAttribute(TextAttribute.FONT, font); //Font
         attributedText.addAttribute(TextAttribute.FOREGROUND, Color.WHITE); //Sættes til foreground + farve = hvid
-        graphics.drawString(attributedText.getIterator(), 2, (size.getFoodObjectHeight()/2)+5); //Placeres i billede -> X og y kordinat er i henhold til image
+        graphics.drawString(attributedText.getIterator(), 2, (size.getFoodObjectHeight()/2)+5); //Placeres i billede -> X og y koordinat er i henhold til image
 
     }
 

@@ -3,12 +3,12 @@ import java.awt.*;
 public abstract class GameObject {
     public Position position;
     protected Size size;
-    protected Farve randomColor;
+    protected ColorInGame color;
     protected Price price;
 
     public GameObject(){
         size = new Size();
-        randomColor = new Farve();
+        color = new ColorInGame();
         price = new Price();
     }
 

@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.text.AttributedString;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -136,7 +135,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
                 System.out.println(this.won);
                 currentLevel++;
                 System.out.println("currentLevel; " + currentLevel);
-                display.levelBoks(currentLevel, true);
+                display.levelWindow(currentLevel, true);
                 display.dispose();
             }
         }
@@ -147,7 +146,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
                 setLost(true);
 
             if(isWon() == false && isLost() == true ) {
-                display.levelBoks(currentLevel, false);
+                display.levelWindow(currentLevel, false);
                 display.dispose();
 
                 }
@@ -209,8 +208,8 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
     }
 
-    public void render() {
-        display.render(this);
+    public void renderGame() {
+        display.renderDisplay(this);
     }
 
     //Getters og Setters

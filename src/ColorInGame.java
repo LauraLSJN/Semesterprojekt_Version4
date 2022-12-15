@@ -4,13 +4,13 @@ import java.awt.Color;
 //Klasse til at generer random farve
 public class Farve {
     public Color randomColor;
-    public Color minusFarve;
-    public Color plusFarve;
+    public Color negativeColor;
+    public Color positiveColor;
 
-    public Farve() {
-        this.randomColor = setRandomColor(); //laver random color fra metoden setRandomColor der tager tilfælde tal indenfor farveskalen RBG
-        this.minusFarve = Color.red;
-        this.plusFarve = Color.green;
+    public ColorInGame() {
+        this.randomColor = setRandomColor();
+        this.negativeColor = Color.red;
+        this.positiveColor = Color.green;
     }
 
     //Funktion der generer random farver

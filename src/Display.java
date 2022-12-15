@@ -7,26 +7,26 @@ public class Display extends JFrame {
     Image img = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingMarket.jpg"); //Billede er i Ressourcer Mappen
 
     public Display(int width, int height, Input input){
-        setTitle("MyFoodSolver");//titel pa vinduet
+        this.widthDisplay = width;
+        this.heightDisplay = height;
+        setTitle(titleDisplay);//titel pa user interface
         setResizable(false);
         canvas = new Canvas();
-        canvas.setPreferredSize(new Dimension(width, height));
-        canvas.setFocusable(false);
+        canvas.setPreferredSize(new Dimension(widthDisplay, heightDisplay)); //Størrelse på user interface
         add(canvas);
         addKeyListener(input);
         pack();
-        canvas.createBufferStrategy(3);
-        setLocationRelativeTo(null);
+        canvas.createBufferStrategy(3); //Mekanisme til at organisere kompleks memory af grafikken
+        setLocationRelativeTo(null); //Canvas åbner i midten af skærmen
         setVisible(true);
     }
 
-    public void render(Game game){
+    public void renderDisplay(Game game){
        BufferStrategy bufferStartegy = canvas.getBufferStrategy();
-        Graphics graphics = bufferStartegy.getDrawGraphics();
-        graphics.drawImage(img, 0, 0,700,500,null); //"Tegner" baggrunden som billedet
-        //graphics.fillRect(0, 0, canvas.getWidth(),canvas.getHeight()); //Kan anvendes hvis billede ikke virker
+       Graphics graphics = bufferStartegy.getDrawGraphics();
+       graphics.drawImage(img, 0, 0, widthDisplay, heightDisplay,null); //Tilføjer billedet -> Baggrunden
 
-        //Henter gameObjects (FoodObjcts & PlayerObjects) og tegner det - Anvender Lambda Expression
+        //Henter gameObjects (FoodObjects & PlayerObjects) og tegner det - Anvender Lambda Expression
             game.getGameObject().forEach(gameObject -> graphics.drawImage( //gameobject vi har foodobjekter og player i
                     gameObject.getSprite(),
                     gameObject.getPosition().getX(),
@@ -47,74 +47,74 @@ public class Display extends JFrame {
                     tid.position.getY(), null
             ));
 
-            game.LevelTekstBoks(graphics);
+            game.LevelTekstBoks(graphics); //Tegner level boksen
             graphics.dispose();
             bufferStartegy.show();
     }
 
     //Knapperne hvori man kan gå til næste eller samme level
-    public void levelBoks(int level, boolean won ){
-        JFrame window = new JFrame();
+    public void levelWindow(int level, boolean won){
+        JFrame window = new JFrame(); //Nyt window
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
-        window.setTitle("MyFoodSolver");//titel pa vinduet
-        window.setPreferredSize(new Dimension(700, 500));//window størrelse
+        window.setTitle(titleDisplay);//titel pa window
+        window.setPreferredSize(new Dimension(widthDisplay, heightDisplay));//window størrelse
         GamePanel gamePanel = new GamePanel(window);
-        window.add(gamePanel);//Tilføjer det gamePanel vi ikke bruger
+        window.add(gamePanel); //Tilføjer gamePanel til window
+        Font font = new Font("Monospaced", Font.BOLD, 25); //Font og størrelse på tekst
 
         if (won) {
             if(level <6) {
-                JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
+                JLabel labelWonLevel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
+                //Label
+                labelWonLevel.setFont(font);
+                gamePanel.add(labelWonLevel);
+                labelWonLevel.setLayout((new BoxLayout(labelWonLevel, BoxLayout.PAGE_AXIS)));
 
-                //jlabel.setHorizontalAlignment(SwingConstants.CENTER);
-                //jlabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-                jlabel.setFont(new Font("Monospaced", Font.BOLD, 32));
-                gamePanel.add(jlabel);
-                jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
+                //Knap
+                JButton buttonWonLevel = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
+                buttonWonLevel.setFont(font);//Fonten paa teksten
+                buttonWonLevel.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-                JButton startBtn = new JButton("Klik her for at starte level " + level + "!");//Det som skla staa i vores startknap
-                startBtn.setFont(new Font("Monospaced", Font.BOLD, 32));//Fonten paa teksten
-                startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+                buttonWonLevel.addActionListener(e -> gamePanel.startLevel(level));//Actionlistener naar knappen trykkes skal spillet starte på det level som fåes med i parantesen
+                buttonWonLevel.setLayout((new BoxLayout(buttonWonLevel, BoxLayout.PAGE_AXIS)));
+                gamePanel.add(buttonWonLevel, BorderLayout.CENTER); //tilføjer knappen til gamePanel
 
-                startBtn.addActionListener(e -> gamePanel.startLevel(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
-                startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
-                gamePanel.add(startBtn, BorderLayout.CENTER); //tegner vores knap med alt det forrige indhold som str, farve og font
+            }else if (level == 6){ //level bliver opdateret i game inden den sendes med videre her, Derfor er man på level 6 når man har vundet.
+               //Label
+                JLabel labelWonGame = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet HELE SPILLET <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
+                labelWonGame.setFont(font);
+                gamePanel.add(labelWonGame);
+                labelWonGame.setLayout((new BoxLayout(labelWonGame, BoxLayout.PAGE_AXIS)));
 
-            }else if (level == 6){
+                //Knap
+                JButton buttonWonGame = new JButton("Klik her for at starte spillet forfra!");//Tekst i knap
+                buttonWonGame.setFont(font);//Fonten paa teksten
+                buttonWonGame.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-                JLabel jlabel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet HELE SPILLET <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
-
-                //jlabel.setHorizontalAlignment(SwingConstants.CENTER);
-                //jlabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-                jlabel.setFont(new Font("Monospaced", Font.BOLD, 32));
-                gamePanel.add(jlabel);
-                jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
-
-                JButton startBtn = new JButton("Klik her for at starte spillet forfra!");//Tekst i knap
-                startBtn.setFont(new Font("Monospaced", Font.BOLD, 32));//Fonten paa teksten
-                startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-
-                startBtn.addActionListener(e -> gamePanel.startLevel(1));//Actionlistener naar knappen trykkes skal spillet starte --> void start
-                startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
-                gamePanel.add(startBtn, BorderLayout.CENTER); //tegner vores knap med alt det forrige indhold som str, farve og font
+                buttonWonGame.addActionListener(e -> gamePanel.startLevel(1));//Actionlistener naar knappen trykkes skal spillet starte på level 1
+                buttonWonGame.setLayout((new BoxLayout(buttonWonGame, BoxLayout.PAGE_AXIS)));
+                gamePanel.add(buttonWonGame, BorderLayout.CENTER); //tilføjer knappen til gamePanel
 
             }
 
-        } else if (won == false ){
-            JLabel jlabel = new JLabel("<html><div style='text-align: center;'> ØV BØV <BR> Du har tabt <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
-            jlabel.setFont(new Font("Monospaced", Font.BOLD, 32));
-            gamePanel.add(jlabel);
-            jlabel.setLayout((new BoxLayout(jlabel, BoxLayout.PAGE_AXIS)));
+        } else if (won == false){
+            //Label
+            JLabel labelLost = new JLabel("<html><div style='text-align: center;'> ØV BØV <BR> Du har tabt <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
+            labelLost.setFont(font);
+            gamePanel.add(labelLost);
+            labelLost.setLayout((new BoxLayout(labelLost, BoxLayout.PAGE_AXIS)));
 
-            JButton startBtn = new JButton("Klik her for at starte level " + level + " IGEN!");//Det som skla staa i vores startknap
-            startBtn.setFont(new Font("Monospaced", Font.BOLD, 32));//Fonten paa teksten
-            startBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
-            startBtn.addActionListener(e -> gamePanel.startLevel(level));//Actionlistener naar knappen trykkes skal spillet starte --> void start
-            startBtn.setLayout((new BoxLayout(startBtn, BoxLayout.PAGE_AXIS)));
-            gamePanel.add(startBtn, BorderLayout.CENTER);
+            //Knap
+            JButton buttonLost = new JButton("Klik her for at starte level " + level + " IGEN!");//Tekst i knappen
+            buttonLost.setFont(font);
+            buttonLost.setAlignmentX(Component.CENTER_ALIGNMENT);
+            buttonLost.addActionListener(e -> gamePanel.startLevel(level));//Actionlistener naar knappen trykkes skal metoden startLevel fra gamePanel kaldes med level i argument
+            buttonLost.setLayout((new BoxLayout(buttonLost, BoxLayout.PAGE_AXIS)));
+            gamePanel.add(buttonLost, BorderLayout.CENTER);
         }
 
         window.pack();//tegner alt indhold
-        window.setLocationRelativeTo(null);//Placerer vinduet
-        window.setVisible(true);//gor vinduet synlig
+        window.setLocationRelativeTo(null);//Placerer window på skærmen
+        window.setVisible(true);//Gør vinduet synlig
     }
 }

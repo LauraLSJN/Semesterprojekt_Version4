@@ -29,7 +29,7 @@ public class GameLoop implements Runnable {
                     update();
                     accumulator -= UPDATE_RATE;
                 }
-                render();
+                renderGameLoop();
             }
             printStats();
         }
@@ -44,8 +44,8 @@ public class GameLoop implements Runnable {
         }
     }
 
-    private void render() {
-        game.render();
+    private void renderGameLoop() {
+        game.renderGame();
         fps++;
     }
 
