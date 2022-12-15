@@ -89,8 +89,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             shoppingBaskets.add(new ShoppingBasket(150));
             gameObject.add(new PlayerObject(new Player(input), 5));
             addFoodObjects();
-        }else {
-            System.out.println("addLevels: else ");
         }
     }
 
@@ -108,8 +106,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             gameObject.add(new FoodObjects(5, true, true));
           //  gameObject.add(new FoodObjects(3, true, true));
             gameObject.add(new FoodObjects(1, true, true));
-        }else {
-            System.out.println("addFoodObject: else ");
         }
     }
 

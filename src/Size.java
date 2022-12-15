@@ -20,16 +20,8 @@ public class Size {
         return foodObjectWidth;
     }
 
-    public void setFoodObjectWidth(int foodObjectWidth) {
-        this.foodObjectWidth = foodObjectWidth;
-    }
-
     public int getFoodObjectHeight() {
         return foodObjectHeight;
-    }
-
-    public void setFoodObjectHeight(int foodObjectHeight) {
-        this.foodObjectHeight = foodObjectHeight;
     }
 
     public int getPlayerObjectWidth() {

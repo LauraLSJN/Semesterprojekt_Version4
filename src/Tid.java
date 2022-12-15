@@ -76,17 +76,6 @@ public class Tid {
         graphics.drawString(attributedText.getIterator(), xText, (height / 2) + 5); //Placeres i billede -> X og y kordinat er i henhold til image
     }
 
-    public void setMinSecond(int minSecond) {
-        this.minSecond = minSecond;
-    }
-
-    public void setSecond(int second) {
-        this.second = second;
-    }
-
-    public void setMinute(int minute) {
-        this.minute = minute;
-    }
 
     public int getMinSecond() {
         return minSecond;
