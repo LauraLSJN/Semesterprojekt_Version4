@@ -50,7 +50,7 @@ public class GameLoop implements Runnable {
     }
 
     private void update() {
-        game.update();
+        game.updateGame();
         ups++;
     }
 }

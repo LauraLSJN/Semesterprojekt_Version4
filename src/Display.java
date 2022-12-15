@@ -47,13 +47,13 @@ public class Display extends JFrame {
             ));
 
             //Tegner tiden
-            game.getTid().forEach(tid -> graphics.drawImage(
+            game.getGameTime().forEach(tid -> graphics.drawImage(
                     tid.getSprite(),
                     tid.position.getX(),
                     tid.position.getY(), null
             ));
 
-            game.LevelTekstBoks(graphics); //Tegner level boksen
+            game.currentLevelDisplay(graphics); //Tegner level boksen
             graphics.dispose();
             bufferStartegy.show();
     }

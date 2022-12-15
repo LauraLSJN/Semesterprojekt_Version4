@@ -4,12 +4,13 @@ import java.util.List;
 import java.util.Random;
 import javax.swing.*;
 
-
-public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vores spil.
+//Game klasse - Spillets logik
+public class Game {
+    private Random random = new Random();
     private Display display;
     private List<GameObject> gameObject; //ArrayList af Objekter = GameObject
     private List<ShoppingBasket> shoppingBaskets;
-    private List<Tid> tid;
+    private List<GameTime> gameTime;
     private Input input; //Input fra brugeren
     Random random = new Random();
     Size size;
@@ -20,18 +21,18 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     int currentLevel;
 
     public Game(int currentLevel) {
-        input = new Input();
-        size = new Size();
-        display = new Display(size.getDisplayWidth(), size.getDisplayHeight(), input);//aendret fra w h Skærmstørrelse 700x500 x: 700, y:500
         this.currentLevel = currentLevel;
-        this.pauseState = false;
         this.won = false;
         this.lost = false;
-        this.stopDrop = false;
+        this.stopDropFoodObjects = false;
+
+        size = new Size();
+        input = new Input();
+        display = new Display(size.getDisplayWidth(), size.getDisplayHeight(), input);//aendret fra w h Skærmstørrelse 700x500 x: 700, y:500
 
         //Tid
-        tid = new ArrayList<>();
-        tid.add(new Tid());
+        gameTime = new ArrayList<>();
+        gameTime.add(new GameTime());
 
         //Shoppingkurven
         shoppingBaskets = new ArrayList<>();
@@ -46,19 +47,16 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         //Anvendes til kontrol
         System.out.println("GameObject Størrelse: " + gameObject.size());
         System.out.println(getGameObject());
-        display.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-
-
     }
 
-    //Funktion som opdateres med framerate
-    public void update() {
-        gameObject.forEach(gameObject -> gameObject.update());
+    //Metode som opdateres med framerate
+    public void updateGame() {
+        gameObject.forEach(gameObject -> gameObject.updateGameObject());
         detectionOutOfDisplay();
-        detection();
-        checkStop();
+        collision();
+        checkGameState();
         dropFoodObjects();
-        tid.forEach(tid -> tid.update());
+        gameTime.forEach(gameTime -> gameTime.updateGameTime());
 
     }
 
@@ -77,7 +75,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         } else if (currentLevel == 3) {
             shoppingBaskets.add(new ShoppingBasket(50));
             gameObject.add(new PlayerObject(new Player(input), 3));
-            System.out.println(getGameObject());
             addFoodObjects();
 
         }else if(currentLevel == 4){
@@ -91,7 +88,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         }
     }
 
-    //Tilføjer foodObjects til gameObject arraylisten
+    //Metode der tilføjer foodObjects til gameObject arraylisten
     public void addFoodObjects() {
         if (currentLevel == 1) {
             gameObject.add(new FoodObjects(1, false, false));
@@ -103,7 +100,6 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
             gameObject.add(new FoodObjects(4, true, true));
         } else if (currentLevel == 5) {
             gameObject.add(new FoodObjects(5, true, true));
-          //  gameObject.add(new FoodObjects(3, true, true));
             gameObject.add(new FoodObjects(1, true, true));
         }
     }
@@ -111,8 +107,8 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
 
     //Dropper foodoOjects
     public void dropFoodObjects() {
-        int randomTal = random.nextInt(2000); //Random tal
-        if (this.stopDrop == false && randomTal <= 25) { //Hvis stopDrop er falsk og randomtol er mindre end eller lig 25, tilføjes nye foodObjects
+        int randomNumber = random.nextInt(2000); //Random tal
+        if (this.stopDropFoodObjects == false && randomNumber <= 25) { //Hvis stopDropFoodObject er falsk og randomNumber er mindre end eller lig 25, tilføjes nye foodObjects
             addFoodObjects();
         }
     }
@@ -121,41 +117,35 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
     public void removeGameObjects() {
         for (int i = 0; i < gameObject.size(); i++) {
             gameObject.remove(i); //Fjerne objekter i gameObject arraylisten
-            tid.get(0).stopTid();
+            gameTime.get(0).stopTid();
         }
     }
 
-    //Tjekker hvorvidt der ikke skal droppes flere foodObjects
-    public void checkStop() {
-        if (shoppingBaskets.get(0).nowCollectedFood == shoppingBaskets.get(0).maxValue) {
+    //Metode tjekker hvorvidt level er vundet eller tabt
+    public void checkGameState() {
+        if (shoppingBaskets.get(0).nowCollectedFood == shoppingBaskets.get(0).maxValue && this.stopDropFoodObjects == false) {
+            this.stopDropFoodObjects = true;
             removeGameObjects();
-
-            if (this.stopDrop == false) {
-                setWon(true);
-                System.out.println(this.won);
-                currentLevel++;
-                System.out.println("currentLevel; " + currentLevel);
-                display.levelWindow(currentLevel, true);
-                display.dispose();
-            }
+            setWon(true);
+            currentLevel++;
+            display.levelWindow(currentLevel, true);
+            display.dispose();
         }
 
-        if (tid.get(0).getMinSecond() == 0 && tid.get(0).getSecond() == 0 && tid.get(0).getMinute() == 0 && this.stopDrop == false) {
-            this.stopDrop = true;
+        if ((gameTime.get(0).getMinSecond() == 0) && (gameTime.get(0).getSecond() == 0) && (gameTime.get(0).getMinute() == 0) && (this.stopDropFoodObjects == false)) {
+            this.stopDropFoodObjects = true;
             removeGameObjects();
-                setLost(true);
+            setLost(true);
 
             if(isWon() == false && isLost() == true ) {
                 display.levelWindow(currentLevel, false);
                 display.dispose();
-
-                }
             }
         }
+    }
 
-
-    //Funktion til detection af hvorvidt firkanterne på displayet rammer hinanden
-    public void detection() {
+    //Metode til hvorvidt firkanterne på displayet rammer hinanden
+    public void collision() {
         for (int x = 1; x < gameObject.size(); x++) {
             if ((gameObject.get(x).getPosition().getX() >= (gameObject.get(0).getPosition().getX() - 30)) // food x >= player x - 30
                     && (gameObject.get(x).getPosition().getX() <= (gameObject.get(0).getPosition().getX() + size.getPlayerObjectWidth() + 20)) //food x <= player x+ size + 20
@@ -182,7 +172,7 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         }
     }
 
-    //Fjerne gameObjcts objekter der er udenfor display
+    //Metode fjerner gameObjects der er udenfor display
     public void detectionOutOfDisplay() {
         for (int i = 1; i < gameObject.size(); i++) {
             if (gameObject.get(i).getPosition().getY() >= gameObject.get(0).getPosition().getY() + size.getPlayerObjectHeight()) { //food y >= player y + player height
@@ -221,8 +211,8 @@ public class Game { //Game klassen - sætter de ting ind som vi skal bruge i vor
         return shoppingBaskets;
     }
 
-    public List<Tid> getTid() {
-        return tid;
+    public List<GameTime> getGameTime() {
+        return gameTime;
     }
 
     public boolean isWon() {

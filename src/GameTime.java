@@ -4,11 +4,11 @@ import java.awt.image.BufferedImage;
 import java.text.AttributedString;
 import java.text.DecimalFormat;
 
-public class Tid {
+public class GameTime {
     Position position;
     int minSecond;
     int second;
-    int minute= 2;
+    int minute = 2;
     String ddSecond;
     String ddMinute;
     String ddMinSec;
@@ -24,13 +24,13 @@ public class Tid {
     AttributedString attributedText;
     Size size;
 
-    public Tid() {
+    public GameTime() {
         size = new Size();
         position = new Position(size.getDisplayWidth() - width, 0);
         this.textInImage = "00:00:00";
     }
 
-    public void update() {
+    public void updateGameTime() {
         if (minSecond == 0 && minute == 0 && second == 0) {
             minSecond = 0;
             minute = 0;

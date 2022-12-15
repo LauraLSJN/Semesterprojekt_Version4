@@ -16,7 +16,7 @@ public class PlayerObject extends GameObject {
     }
 
     @Override
-    public void update() {
+    public void updateGameObject() {
          speedX = 0;
         oldPosX = position.getX(); //Gemmer tidligere x koordinat
             if (controller.isRequestiongLeft()) {

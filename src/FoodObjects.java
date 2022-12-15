@@ -22,7 +22,7 @@ public class FoodObjects extends GameObject {
     }
 
     @Override
-    public void update() {
+    public void updateGameObject() {
         int oldPosition = position.getY(); //Position.getY metode til at hente y-koordinat
         position.setY(oldPosition + speedFoodObject); //position.setY metode til at sætte den nye y-koordinat
     }
