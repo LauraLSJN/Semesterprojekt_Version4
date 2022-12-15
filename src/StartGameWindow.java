@@ -11,7 +11,6 @@ import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class StartGameWindow {
 
-
     //Laver Start knap
     public void StartBoks() {
         JFrame window = new JFrame();//tegner vinduet
