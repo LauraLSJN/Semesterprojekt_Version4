@@ -3,7 +3,7 @@
 public class GameLoop implements Runnable {
     private Game game;
     private boolean running;
-    private final double updateRate = 1.0d / 60.0d;
+    private final double UPDATE_RATE = 1.0d / 60.0d;
     private long nextStatTime;
     private int fps, ups;
 
@@ -24,10 +24,10 @@ public class GameLoop implements Runnable {
             accumulator += lastRenderTimeInSeconds;
             lastUpdate = currentTime;
 
-            if (accumulator >= updateRate) {
-                while (accumulator >= updateRate) {
+            if (accumulator >= UPDATE_RATE) {
+                while (accumulator >= UPDATE_RATE) {
                     update();
-                    accumulator -= updateRate;
+                    accumulator -= UPDATE_RATE;
                 }
                 render();
             }
