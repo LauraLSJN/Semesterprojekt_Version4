@@ -15,10 +15,10 @@ public abstract class GameObject {
 
     public abstract Image getSprite();
     public abstract void updateGameObject();
+
     public Position getPosition() {
         return position;
     }
-
     public Price getPrice(){
         return price;
     }

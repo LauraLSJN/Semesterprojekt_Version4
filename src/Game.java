@@ -12,13 +12,11 @@ public class Game {
     private List<ShoppingBasket> shoppingBaskets;
     private List<GameTime> gameTime;
     private Input input; //Input fra brugeren
-    Random random = new Random();
-    Size size;
-    private boolean stopDrop;
-    boolean won;
-    boolean lost;
-    boolean pauseState;
-    int currentLevel;
+    private Size size;
+    private boolean stopDropFoodObjects;
+    private boolean won;
+    private boolean lost;
+    private int currentLevel;
 
     public Game(int currentLevel) {
         this.currentLevel = currentLevel;
@@ -43,6 +41,8 @@ public class Game {
         //Tilføjer Levels
         addLevels();
 
+        //Stopper programmet når vinduet lukker
+        display.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         //Anvendes til kontrol
         System.out.println("GameObject Størrelse: " + gameObject.size());
@@ -60,7 +60,7 @@ public class Game {
 
     }
 
-    //Funktion der styrer levels
+    //Metode der styrer levels
     public void addLevels() {
         if (currentLevel == 1) {
             shoppingBaskets.add(new ShoppingBasket(5));
@@ -77,11 +77,12 @@ public class Game {
             gameObject.add(new PlayerObject(new Player(input), 3));
             addFoodObjects();
 
-        }else if(currentLevel == 4){
+        } else if (currentLevel == 4) {
             shoppingBaskets.add(new ShoppingBasket(100));
             gameObject.add(new PlayerObject(new Player(input), 4));
             addFoodObjects();
-        } else if(currentLevel == 5) {
+
+        } else if (currentLevel == 5) {
             shoppingBaskets.add(new ShoppingBasket(150));
             gameObject.add(new PlayerObject(new Player(input), 5));
             addFoodObjects();
@@ -96,7 +97,7 @@ public class Game {
             gameObject.add(new FoodObjects(2, true, false));
         } else if (currentLevel == 3) {
             gameObject.add(new FoodObjects(3, true, true));
-        }else if (currentLevel == 4){
+        } else if (currentLevel == 4) {
             gameObject.add(new FoodObjects(4, true, true));
         } else if (currentLevel == 5) {
             gameObject.add(new FoodObjects(5, true, true));
@@ -105,7 +106,7 @@ public class Game {
     }
 
 
-    //Dropper foodoOjects
+    //Metode til at generere sandsynlighed vha. random, for hvornår foodobjecs skal tilføjes
     public void dropFoodObjects() {
         int randomNumber = random.nextInt(2000); //Random tal
         if (this.stopDropFoodObjects == false && randomNumber <= 25) { //Hvis stopDropFoodObject er falsk og randomNumber er mindre end eller lig 25, tilføjes nye foodObjects
@@ -113,7 +114,7 @@ public class Game {
         }
     }
 
-    //Funktion der fjerne objekter i arrayListen gameObjects
+    //Metode der fjerne alle objekter i arrayListen gameObjects
     public void removeGameObjects() {
         for (int i = 0; i < gameObject.size(); i++) {
             gameObject.remove(i); //Fjerne objekter i gameObject arraylisten
@@ -137,7 +138,7 @@ public class Game {
             removeGameObjects();
             setLost(true);
 
-            if(isWon() == false && isLost() == true ) {
+            if (isWon() == false && isLost() == true) {
                 display.levelWindow(currentLevel, false);
                 display.dispose();
             }
@@ -154,21 +155,12 @@ public class Game {
                     && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) >= (gameObject.get(0).getPosition().getX() - 35)) //food x + size >= player x -35
                     && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) <= (gameObject.get(0).getPosition().getX() + size.getFoodObjectWidth() + 60)) //food x + size <= player x + size + 60
             ) {
-                //SET
-                shoppingBaskets.get(0).setCollectedFood(gameObject.get(x).getPrice().getValuePrice());
                 //ADD
                 shoppingBaskets.get(0).addCollectedFood(gameObject.get(x).getPrice().getValuePrice());
-
-                //Konsol print, anvendes til kontrol
-                System.out.println(gameObject.get(x).getPosition().getX());
-                System.out.println(gameObject.toString());
-                System.out.println(x);
-
+                
+                //Sletter det ramte foodObject
                 gameObject.remove(x); //Fjerner objektet -> Der bliver ramt
-                System.out.println(getGameObject()); //Print til konsol -> Se om objektet er fjernet fra arraylist
-
             }
-
         }
     }
 
@@ -181,21 +173,20 @@ public class Game {
         }
     }
 
-    public void LevelTekstBoks(Graphics g){
-        int tekstBoksWidth = 125; // 500
-        int tekstBoksHeight = 50; //100
+    //Metode til at lave currentlevel boksen
+    public void currentLevelDisplay(Graphics g) {
+        int tekstBoksWidth = 125;
+        int tekstBoksHeight = 50;
         int tekstBoksX = 0;
         int tekstBoksY = 110;
         int fontSize = 15;
         Font font = new Font("Monospaced", Font.PLAIN, fontSize);
         g.setFont(font);
         g.setColor(Color.PINK);
-        g.fillRect(tekstBoksX,tekstBoksY,tekstBoksWidth,tekstBoksHeight);
+        g.fillRect(tekstBoksX, tekstBoksY, tekstBoksWidth, tekstBoksHeight);
         g.setColor(Color.WHITE);
-        g.drawString("Level: ",tekstBoksX+5,tekstBoksY+20);
-        g.drawString(String.valueOf(currentLevel),tekstBoksX+5+fontSize,tekstBoksY+40);
-        //https://www.tabnine.com/code/java/methods/java.awt.Graphics/setFont
-
+        g.drawString("Level: ", tekstBoksX + 5, tekstBoksY + 20);
+        g.drawString(String.valueOf(currentLevel), tekstBoksX + 5 + fontSize, tekstBoksY + 40);
     }
 
     public void renderGame() {

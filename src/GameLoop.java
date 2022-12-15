@@ -1,5 +1,3 @@
-
-
 public class GameLoop implements Runnable {
     private Game game;
     private boolean running;

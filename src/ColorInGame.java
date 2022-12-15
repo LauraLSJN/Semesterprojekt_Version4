@@ -1,4 +1,3 @@
-
 import java.awt.Color;
 
 //Klasse til at genere farver
