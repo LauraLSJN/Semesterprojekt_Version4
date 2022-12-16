@@ -124,7 +124,7 @@ public class Game {
 
     //Metode tjekker hvorvidt level er vundet eller tabt
     public void checkGameState() {
-        if (shoppingBaskets.get(0).nowCollectedFood == shoppingBaskets.get(0).maxValue && this.stopDropFoodObjects == false) {
+        if (shoppingBaskets.get(0).getCollectedFood() == shoppingBaskets.get(0).getMaxValue() && this.stopDropFoodObjects == false) {
             this.stopDropFoodObjects = true;
             removeGameObjects();
             setWon(true);
@@ -156,7 +156,7 @@ public class Game {
                     && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) <= (gameObject.get(0).getPosition().getX() + size.getFoodObjectWidth() + 60)) //food x + size <= player x + size + 60
             ) {
                 //ADD
-                shoppingBaskets.get(0).addCollectedFood(gameObject.get(x).price.getValuePrice());
+                shoppingBaskets.get(0).addCollectedFood(gameObject.get(x).price.getPrice());
                 
                 //Sletter det ramte foodObject
                 gameObject.remove(x); //Fjerner objektet -> Der bliver ramt

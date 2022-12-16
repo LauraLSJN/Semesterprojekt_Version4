@@ -20,26 +20,19 @@ public class ShoppingBasket {
     private int configuration = 5;
     Font font = new Font("Monospaced", Font.PLAIN, fontSize);
 
-    public ShoppingBasket(int shoppingbasket) {
+    public ShoppingBasket(int amount) {
         position = new Position(0, 0);
-        this.maxValue = shoppingbasket; //sætter den efterspurgte værdi 5
-        maxValueString = String.valueOf(maxValue); //Taler int om til String
-        this.collectedFood = 0; //Indsamlet point
-    }
-
-    public void setCollectedFood(int collectedFood) {
-        this.collectedFood = collectedFood;
-        System.out.println("SET METODE: " + collectedFood);
+        this.maxValue = amount;
+        maxValueString = String.valueOf(maxValue); //Laver maxValue om til String
     }
 
 
-    public void addCollectedFood(int foodValue) {
-        //System.out.println("NowCOllectedFoodFør = " +this.nowCollectedFood); //Kontrol
-        this.nowCollectedFood = this.nowCollectedFood + foodValue; //Opdaterer nowCollectedFood
-        //System.out.println("NowCOllectedFoodEfter = " +this.nowCollectedFood); //Kontrol
-
+    //Metode til at tilføje værdien i parameteren til collectedFood
+    public void addCollectedFood(int foodPrice) {
+        this.collectedFood = this.collectedFood + foodPrice; //Opdaterer nowCollectedFood
     }
 
+    //Tegner info om shoppingkurven
     public Image getSprite() {
         BufferedImage image = new BufferedImage(shoppingBasketWidth, shoppingBasketHeight, BufferedImage.TYPE_INT_RGB); //Laver Buffered billede
         Graphics2D graphics = image.createGraphics(); //Instans af Graphics2D klasse så vi kan bruge klassen
@@ -48,15 +41,14 @@ public class ShoppingBasket {
 
         //Tegner tekst i billede
         setText(graphics, "Shoppingkurv:", textX, textY);
-        setText(graphics, "Indsamlet:", textX, textY*2+fontSize+configuration);
-        setText(graphics, maxValueString, textX + fontSize, textY + fontSize+configuration); //Tegner maxValue
-        setText(graphics, String.valueOf(nowCollectedFood), textX + fontSize, textY*3+fontSize+configuration); //Tegner ShoppingBasket nowCollected værdi
+        setText(graphics, "Indsamlet:", textX, textY * 2 + fontSize + configurationGraphic);
+        setText(graphics, maxValueString, textX + fontSize, textY + fontSize + configurationGraphic); //Tegner maxValue
+        setText(graphics, String.valueOf(collectedFood), textX + fontSize, textY * 3 + fontSize + configurationGraphic); //Tegner ShoppingBasket CollectedFood værdi
 
         return image;
     }
 
     //Tekst i firkant
-    //https://www.baeldung.com/java-add-text-to-image
     public void setText(Graphics2D graphics, String text, int x, int y) {
         attributedText = new AttributedString(text);
         attributedText.addAttribute(TextAttribute.FONT, font); //Font

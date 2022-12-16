@@ -18,7 +18,7 @@ public class FoodObjects extends GameObject {
         position = new Position(random.nextInt(size.getDisplayWidth()- size.getFoodObjectWidth()),0 ); //Placeres indenfor display -> display width-foodObjectWidth, så hele firkenten er indenfor display
         isRandomPrice(randomPrice);
         color = new ColorInGame();
-        textInFoodObject = String.valueOf(price.getValuePrice());
+        textInFoodObject = String.valueOf(price.getPrice());
         setColor(randomColor);
         this.speedFoodObject = speed;
     }
@@ -32,9 +32,9 @@ public class FoodObjects extends GameObject {
     //Metode til at tjekke hvorvidt variablen price skal være random eller ej
     public void isRandomPrice(boolean randomPrice){
         if (randomPrice){
-            price.setValuePrice(random.nextInt(price.getMinPrice(),price.getMaxPrice()+1)); //fra -10 til 10
+            price.setPrice(random.nextInt(price.getMinPrice(),price.getMaxPrice()+1)); //fra -10 til 10
         } else{
-            price.setValuePrice(5); //Sætter prisen til 5 altid
+            price.setPrice(5); //Sætter prisen til 5 altid
         }
     }
 
@@ -43,7 +43,7 @@ public class FoodObjects extends GameObject {
         if (randomColor){
             this.colorFoodObject = color.randomColor; //Random farve
         }else {
-            if(price.getValuePrice() >= 0){//hvis prisen er lig eller større end 0
+            if(price.getPrice() >= 0){//hvis prisen er lig eller større end 0
             this.colorFoodObject = color.positiveColor; //grøn farve
         } else{
             this.colorFoodObject = color.negativeColor; //rød farve

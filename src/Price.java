@@ -9,12 +9,12 @@ public class Price {
         this.minPrice = -10;
     }
 
-    public int getValuePrice() {
-        return valuePrice;
+    public int getPrice() {
+        return price;
     }
 
-    public void setValuePrice(int valuePrice) {
-        this.valuePrice = valuePrice;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public int getMinPrice() {
@@ -28,7 +28,7 @@ public class Price {
     @Override
     public String toString() {
         return "Price{" +
-                "valuePrice=" + valuePrice +
+                "valuePrice=" + price +
                 '}';
     }
 }
