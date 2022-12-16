@@ -28,7 +28,7 @@ public class StartGameWindow {
         window.add(startBtn, BorderLayout.PAGE_START);//tegner vores knap med alt det forrige indhold som str, farve og font
         window.pack();//tegner alt indhold
         window.setLocationRelativeTo(null);//Placerer vinduet
-        window.setVisible(true);//gor vinduet synlig
+        window.setVisible(true);//Gør vinduet synlig
 
     }
 

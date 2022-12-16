@@ -1,10 +1,10 @@
 public class Price {
-    private int valuePrice;
+
+    private int price;
     private int minPrice;
     private int maxPrice;
 
     public Price(){
-        this.valuePrice = valuePrice;
         this.maxPrice = 10;
         this.minPrice = -10;
     }

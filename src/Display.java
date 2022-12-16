@@ -23,41 +23,41 @@ public class Display extends JFrame {
         setVisible(true);
     }
 
-    public void renderDisplay(Game game){
-       BufferStrategy bufferStartegy = canvas.getBufferStrategy();
-       Graphics graphics = bufferStartegy.getDrawGraphics();
-       graphics.drawImage(img, 0, 0, widthDisplay, heightDisplay,null); //Tilføjer billedet -> Baggrunden
+    public void renderDisplay(Game game) {
+        BufferStrategy bufferStartegy = canvas.getBufferStrategy();
+        Graphics graphics = bufferStartegy.getDrawGraphics();
+        graphics.drawImage(img, 0, 0, size.getDisplayWidth(), size.getDisplayHeight(), null);  //Tilføjer billedet -> Baggrunden
 
         //Henter gameObjects (FoodObjects & PlayerObjects) og tegner det - Anvender Lambda Expression
-            game.getGameObject().forEach(gameObject -> graphics.drawImage( //gameobject vi har foodobjekter og player i
-                    gameObject.getSprite(),
-                    gameObject.getPosition().getX(),
-                    gameObject.getPosition().getY(),
-                    null
+        game.getGameObject().forEach(gameObject -> graphics.drawImage( //gameobject vi har foodobjekter og player i
+                gameObject.getSprite(),
+                gameObject.getPosition().getX(),
+                gameObject.getPosition().getY(),
+                null
 
-            ));
+        ));
 
-            //Tegner shoppingBasket
-            game.getShoppingBaskets().forEach(shoppingBasket -> graphics.drawImage(
-                    shoppingBasket.getSprite(),
-                    shoppingBasket.position.getX(),
-                    shoppingBasket.position.getY(), null
-            ));
+        //Tegner shoppingBasket
+        game.getShoppingBaskets().forEach(shoppingBasket -> graphics.drawImage(
+                shoppingBasket.getSprite(),
+                shoppingBasket.position.getX(),
+                shoppingBasket.position.getY(), null
+        ));
 
-            //Tegner tiden
-            game.getGameTime().forEach(tid -> graphics.drawImage(
-                    tid.getSprite(),
-                    tid.position.getX(),
-                    tid.position.getY(), null
-            ));
+        //Tegner tiden
+        game.getGameTime().forEach(tid -> graphics.drawImage(
+                tid.getSprite(),
+                tid.position.getX(),
+                tid.position.getY(), null
+        ));
 
-            game.currentLevelDisplay(graphics); //Tegner level boksen
-            graphics.dispose();
-            bufferStartegy.show();
+        game.currentLevelDisplay(graphics); //Tegner level boksen
+        graphics.dispose();
+        bufferStartegy.show();
     }
 
     //Knapperne hvori man kan gå til næste eller samme level
-    public void levelWindow(int level, boolean won){
+    public void levelWindow(int level, boolean won) {
         JFrame window = new JFrame(); //Nyt window
         window.setDefaultCloseOperation(EXIT_ON_CLOSE);
         window.setTitle(titleDisplay);//titel pa window
@@ -68,7 +68,7 @@ public class Display extends JFrame {
         Font font = new Font("Monospaced", Font.BOLD, 25); //Font og størrelse på tekst
 
         if (won) {
-            if(level <6) {
+            if (level < 6) {
                 JLabel labelWonLevel = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
                 //Label
                 labelWonLevel.setFont(font);
@@ -84,8 +84,8 @@ public class Display extends JFrame {
                 buttonWonLevel.setLayout((new BoxLayout(buttonWonLevel, BoxLayout.PAGE_AXIS)));
                 launchGameLevel.add(buttonWonLevel, BorderLayout.CENTER); //tilføjer knappen til launchGameLevel
 
-            }else if (level == 6){ //level bliver opdateret i game inden den sendes med videre her, Derfor er man på level 6 når man har vundet.
-               //Label
+            } else if (level == 6) { //level bliver opdateret i game inden den sendes med videre her, Derfor er man på level 6 når man har vundet.
+                //Label
                 JLabel labelWonGame = new JLabel("<html><div style='text-align: center;'> Tillykke <BR> Du har vundet HELE SPILLET <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
                 labelWonGame.setFont(font);
                 launchGameLevel.add(labelWonGame);
@@ -102,7 +102,7 @@ public class Display extends JFrame {
 
             }
 
-        } else if (won == false){
+        } else if (won == false) {
             //Label
             JLabel labelLost = new JLabel("<html><div style='text-align: center;'> ØV BØV <BR> Du har tabt <BR> </div></html>", SwingConstants.CENTER); //, SwingConstants.CENTER
             labelLost.setFont(font);

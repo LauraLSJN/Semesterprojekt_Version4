@@ -6,10 +6,9 @@ public class PlayerObject extends GameObject {
     private int speedX;
     private int speed;
     private int oldPosX;
-    Image imgShoppingkurv = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingKurv3.png");
+    public Image imgPlayer = Toolkit.getDefaultToolkit().getImage("Ressourcer/shoppingKurv3.png");
 
-    public PlayerObject(Controller controller, int speed) { //, int speed
-        super();
+    public PlayerObject(Controller controller, int speed) {
         this.controller = controller;
         this.speed = speed;
         position = new Position(350,440); //Startposition

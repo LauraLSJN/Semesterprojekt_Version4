@@ -26,7 +26,7 @@ public class Game {
 
         size = new Size();
         input = new Input();
-        display = new Display(size.getDisplayWidth(), size.getDisplayHeight(), input);//aendret fra w h Skærmstørrelse 700x500 x: 700, y:500
+        display = new Display(input);
 
         //Tid
         gameTime = new ArrayList<>();

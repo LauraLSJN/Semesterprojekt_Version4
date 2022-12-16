@@ -4,12 +4,11 @@ import java.awt.image.BufferedImage;
 import java.text.AttributedString;
 
 public class ShoppingBasket {
-    Position position;
-    int maxValue;
-    String maxValueString;
-    AttributedString attributedText;
-    int collectedFood;
-    int nowCollectedFood;
+    public Position position;
+    private int maxValue;
+    private String maxValueString;
+    private AttributedString attributedText;
+    private int collectedFood;
 
     //Grafiske variabler
     private int fontSize = 15;
@@ -17,8 +16,8 @@ public class ShoppingBasket {
     private int shoppingBasketHeight = 105; //I alt er tekst 95 pixel. For at få 5 pixel i top og bund sættes height til 105
     private int textX = 5;
     private int textY = 25;
-    private int configuration = 5;
-    Font font = new Font("Monospaced", Font.PLAIN, fontSize);
+    private int configurationGraphic = 5;
+    private Font font = new Font("Monospaced", Font.PLAIN, fontSize);
 
     public ShoppingBasket(int amount) {
         position = new Position(0, 0);
@@ -54,5 +53,13 @@ public class ShoppingBasket {
         attributedText.addAttribute(TextAttribute.FONT, font); //Font
         attributedText.addAttribute(TextAttribute.FOREGROUND, Color.WHITE); //Sættes til foreground + farve = hvid
         graphics.drawString(attributedText.getIterator(), x, y); //Placeres i billede -> X og y kordinat er i henhold til image
+    }
+
+    public int getMaxValue() {
+        return maxValue;
+    }
+
+    public int getCollectedFood() {
+        return collectedFood;
     }
 }
