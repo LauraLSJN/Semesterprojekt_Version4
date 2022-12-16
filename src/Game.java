@@ -118,7 +118,7 @@ public class Game {
     public void removeGameObjects() {
         for (int i = 0; i < gameObject.size(); i++) {
             gameObject.remove(i); //Fjerne objekter i gameObject arraylisten
-            gameTime.get(0).stopTid();
+            gameTime.get(0).stopTime();
         }
     }
 
@@ -133,7 +133,7 @@ public class Game {
             display.dispose();
         }
 
-        if ((gameTime.get(0).getMinSecond() == 0) && (gameTime.get(0).getSecond() == 0) && (gameTime.get(0).getMinute() == 0) && (this.stopDropFoodObjects == false)) {
+        if ((gameTime.get(0).getMilliSecond() == 0) && (gameTime.get(0).getSecond() == 0) && (gameTime.get(0).getMinute() == 0) && (this.stopDropFoodObjects == false)) {
             this.stopDropFoodObjects = true;
             removeGameObjects();
             setLost(true);

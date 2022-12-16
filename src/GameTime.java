@@ -27,19 +27,18 @@ public class GameTime {
     public GameTime() {
         size = new Size();
         position = new Position(size.getDisplayWidth() - width, 0);
-        this.textInImage = "00:00:00";
     }
 
     public void updateGameTime() {
-        if (minSecond == 0 && minute == 0 && second == 0) {
-            minSecond = 0;
+        if (milliSecond == 0 && minute == 0 && second == 0) {
+            milliSecond = 0;
             minute = 0;
             second = 0;
 
         } else {
-            minSecond--;
-            if (minSecond == -1) {
-                minSecond = 59;
+            milliSecond--;
+            if (milliSecond == -1) {
+                milliSecond = 59;
                 second--;
             }
             if (second == -1) {
@@ -47,17 +46,17 @@ public class GameTime {
                 minute--;
             }
         }
-        ddSecond = ddFormat.format(second);
-        ddMinute = ddFormat.format(minute);
-        ddMinSec = ddFormat.format(minSecond);
-        this.textInImage = (ddMinute + ":" + ddSecond + ":" + ddMinSec);
+        dfSecond = format.format(second);
+        dfMinute = format.format(minute);
+        dfMinSec = format.format(milliSecond);
+        this.textInImage = (dfMinute + ":" + dfSecond + ":" + dfMinSec);
 
     }
 
-    public void stopTid() {
+    public void stopTime() {
         this.minute = 0;
         this.second = 0;
-        this.minSecond = 0;
+        this.milliSecond = 0;
     }
 
     public Image getSprite() {
@@ -77,8 +76,8 @@ public class GameTime {
     }
 
 
-    public int getMinSecond() {
-        return minSecond;
+    public int getMilliSecond() {
+        return milliSecond;
     }
 
     public int getSecond() {

@@ -4,7 +4,6 @@ public abstract class GameObject {
    //Protected for at de kan tilgåes af subklasserne
     protected Position position;
     protected Size size;
-    protected ColorInGame color;
     protected Price price;
 
     public GameObject(){

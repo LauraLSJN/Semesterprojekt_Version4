@@ -12,11 +12,13 @@ public class FoodObjects extends GameObject {
     private AttributedString attributedText;
     private int speedFoodObject;
     private Color colorFoodObject;
+    private ColorInGame color;
 
     public FoodObjects(int speed, boolean randomPrice, boolean randomColor){
         position = new Position(random.nextInt(size.getDisplayWidth()- size.getFoodObjectWidth()),0 ); //Placeres indenfor display -> display width-foodObjectWidth, så hele firkenten er indenfor display
         isRandomPrice(randomPrice);
-        textInFoodObject = String.valueOf(getPrice().getValuePrice()); //Henter valuePrice
+        color = new ColorInGame();
+        textInFoodObject = String.valueOf(price.getValuePrice());
         setColor(randomColor);
         this.speedFoodObject = speed;
     }
