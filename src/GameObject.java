@@ -8,7 +8,6 @@ public abstract class GameObject {
 
     public GameObject(){
         size = new Size();
-        color = new ColorInGame();
         price = new Price();
     }
 
@@ -17,9 +16,6 @@ public abstract class GameObject {
 
     public Position getPosition() {
         return position;
-    }
-    public Price getPrice(){
-        return price;
     }
 
 }

@@ -5,24 +5,24 @@ import java.text.AttributedString;
 import java.text.DecimalFormat;
 
 public class GameTime {
-    Position position;
-    int minSecond;
-    int second;
-    int minute = 2;
-    String ddSecond;
-    String ddMinute;
-    String ddMinSec;
-    DecimalFormat ddFormat = new DecimalFormat("00");
-    int fontSize = 15;
-    int xText = 15;
-    int width = 100;
-    int height = 50;
+    public Position position;
+    private int milliSecond;
+    private int second;
+    private int minute = 2;
+    private String dfSecond; //df = DecimalFormat
+    private String dfMinute; //df = DecimalFormat
+    private String dfMinSec; //df = DecimalFormat
+    private DecimalFormat format = new DecimalFormat("00");
+    private int fontSize = 15;
+    private int xText = 15;
+    private int width = 100;
+    private int height = 50;
 
     //TEKST
-    Font font = new Font("Monospaced", Font.BOLD, fontSize);
-    String textInImage;
-    AttributedString attributedText;
-    Size size;
+    private Font font = new Font("Monospaced", Font.BOLD, fontSize);
+    private String textInImage;
+    private AttributedString attributedText;
+    private Size size;
 
     public GameTime() {
         size = new Size();

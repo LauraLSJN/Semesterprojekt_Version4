@@ -5,10 +5,10 @@ public class LaunchGameLevel extends JPanel {
     private static Timer timer; //Java public klasse
 
     public LaunchGameLevel(JFrame window) {
-        ActionListener Game = e -> {
-            window.dispose(); //Når trykkes på knap, skal vinduet fjernes
+        ActionListener actionListener = pressed -> { //Når trykkes på knap, skal vinduet fjernes
+            window.dispose();
         };
-        timer = new Timer(200, Game);
+        timer = new Timer(200, actionListener);
     }
 
    public void start() {

@@ -156,7 +156,7 @@ public class Game {
                     && ((gameObject.get(x).getPosition().getX() + size.getFoodObjectWidth()) <= (gameObject.get(0).getPosition().getX() + size.getFoodObjectWidth() + 60)) //food x + size <= player x + size + 60
             ) {
                 //ADD
-                shoppingBaskets.get(0).addCollectedFood(gameObject.get(x).getPrice().getValuePrice());
+                shoppingBaskets.get(0).addCollectedFood(gameObject.get(x).price.getValuePrice());
                 
                 //Sletter det ramte foodObject
                 gameObject.remove(x); //Fjerner objektet -> Der bliver ramt
