@@ -45,7 +45,7 @@ public class FoodObjects extends GameObject {
         }else {
             if(price.getPrice() >= 0){//hvis prisen er lig eller større end 0
             this.colorFoodObject = color.positiveColor; //grøn farve
-        } else{
+            } else{
             this.colorFoodObject = color.negativeColor; //rød farve
         }
         }
