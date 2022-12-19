@@ -8,9 +8,9 @@ import javax.swing.*;
 public class Game {
     private Random random = new Random();
     private Display display;
-    private List<GameObject> gameObject; //ArrayList af Objekter = GameObject
-    private List<ShoppingBasket> shoppingBaskets;
-    private List<GameTime> gameTime;
+    private ArrayList<GameObject> gameObject; //ArrayList af Objekter = GameObject
+    private ArrayList<ShoppingBasket> shoppingBaskets;
+    private ArrayList<GameTime> gameTime;
     private Input input; //Input fra brugeren
     private Size size;
     private boolean stopDropFoodObjects;
@@ -194,15 +194,15 @@ public class Game {
     }
 
     //Getters og Setters
-    public List<GameObject> getGameObject() {
+    public ArrayList<GameObject> getGameObject() {
         return gameObject;
     }
 
-    public List<ShoppingBasket> getShoppingBaskets() {
+    public ArrayList<ShoppingBasket> getShoppingBaskets() {
         return shoppingBaskets;
     }
 
-    public List<GameTime> getGameTime() {
+    public ArrayList<GameTime> getGameTime() {
         return gameTime;
     }
 

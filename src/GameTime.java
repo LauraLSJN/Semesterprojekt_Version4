@@ -7,8 +7,8 @@ import java.text.DecimalFormat;
 public class GameTime {
     public Position position;
     private int milliSecond;
-    private int second = 10;
-    private int minute;
+    private int second;
+    private int minute = 2;
     private String dfSecond; //df = DecimalFormat
     private String dfMinute; //df = DecimalFormat
     private String dfMinSec; //df = DecimalFormat
