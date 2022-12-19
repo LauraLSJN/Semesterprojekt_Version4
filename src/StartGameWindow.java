@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class StartGameWindow {
-    Size size;
+    private Size size;
 
     //Laver Start knap
     public void StartWindow() {
